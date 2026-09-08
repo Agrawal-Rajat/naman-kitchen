@@ -1,0 +1,31 @@
+import { useEffect } from 'react';
+
+/**
+ * Helmet — lightweight document head manager for React
+ */
+export function Helmet({ title, description, ogImage = '/logo.png' }) {
+  useEffect(() => {
+    if (title) {
+      document.title = title;
+    }
+    if (description) {
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        document.head.appendChild(metaDesc);
+      }
+      metaDesc.content = description;
+    }
+    if (ogImage) {
+      let metaOg = document.querySelector('meta[property="og:image"]');
+      if (metaOg) {
+        metaOg.content = ogImage;
+      }
+    }
+  }, [title, description, ogImage]);
+
+  return null;
+}
+
+export default Helmet;

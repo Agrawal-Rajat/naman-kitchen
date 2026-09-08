@@ -1,0 +1,175 @@
+/* ====================================================
+   NAMAN KITCHEN — Vintage & Modern Cabinet Splash Screen
+   ==================================================== */
+
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1613;
+  overflow: hidden;
+  user-select: none;
+  perspective: 1200px;
+}
+
+/* Wood Grain & Rich Material Textures */
+.cabinet-wood-texture {
+  background-color: #2b231d;
+  background-image: 
+    /* Subtle vertical wood grain striations */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.08) 0px,
+      rgba(0, 0, 0, 0.08) 2px,
+      transparent 2px,
+      transparent 14px
+    ),
+    /* Warm walnut gradient with ambient room lighting */
+    radial-gradient(ellipse 90% 70% at 50% 50%, #3e3229 0%, #271f1a 70%, #1a1410 100%);
+  position: relative;
+}
+
+/* Outer Cabinet Frame Casing */
+.cabinet-frame {
+  box-shadow: 
+    inset 0 0 40px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Shaker Panel Raised Edge Profile */
+.shaker-box {
+  position: relative;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.25) 100%);
+  border: 1px solid rgba(184, 160, 74, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-left-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(0, 0, 0, 0.6);
+  border-right-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.shaker-inner-bevel {
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* Horizontal Shadow Groove between rows */
+.cabinet-groove {
+  height: 6px;
+  background: linear-gradient(180deg, #100d0b 0%, #1e1713 50%, #0d0a08 100%);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 20;
+}
+
+/* Brushed Brass Hardware (Knobs & Handles) */
+.brass-handle-rod {
+  background: linear-gradient(
+    180deg,
+    #fff2c2 0%,
+    #e5c875 25%,
+    #b89b43 55%,
+    #6d5518 85%,
+    #4a370b 100%
+  );
+  box-shadow: 
+    0 8px 18px rgba(0, 0, 0, 0.55),
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.brass-handle-mount {
+  background: radial-gradient(circle at 35% 35%, #f7e6a7 0%, #b89b43 55%, #463409 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.brass-knob {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff8d6 0%, #e0c26d 35%, #9b7f2b 75%, #4a380e 100%);
+  box-shadow: 
+    0 6px 14px rgba(0, 0, 0, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.brass-knob-base {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #c4a74f 0%, #685016 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vintage Gold Brand Typography */
+.brand-name-gold {
+  font-family: 'DM Serif Display', Georgia, serif;
+  background: linear-gradient(135deg, #FFF6DA 0%, #E6CA7E 35%, #BFA253 70%, #F5E5B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 12px rgba(184, 160, 74, 0.25);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+  letter-spacing: 0.08em;
+}
+
+/* Subtle Shimmer across Brass and Branding */
+@keyframes brassShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  50%, 100% {
+    transform: translateX(250%) skewX(-25deg);
+  }
+}
+
+.shimmer-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: brassShimmer 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Ambient glow in center behind cabinet when unlocking */
+.center-glow-spot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 650px);
+  height: 240px;
+  background: radial-gradient(ellipse at center, rgba(184, 160, 74, 0.12) 0%, rgba(52, 43, 112, 0.08) 50%, transparent 80%);
+  pointer-events: none;
+}
