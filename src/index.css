@@ -720,4 +720,34 @@
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
+/* ====================================================
+   CONTINUOUS CHAIN MARQUEE TICKER
+   ==================================================== */
+
+@keyframes marquee-chain-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-chain {
+  display: flex;
+  width: max-content;
+  animation: marquee-chain-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-chain:hover {
+  animation-play-state: paused;
+}
+
+.mask-edge-fade {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+
 
