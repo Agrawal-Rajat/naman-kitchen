@@ -1,0 +1,58 @@
+export const hardwareItems = [
+  {
+    id: 'soft-close-drawers',
+    title: 'Soft-Close Drawers',
+    description: 'Precision-engineered drawers that close smoothly and silently, adding refinement to everyday use.',
+    category: 'drawers',
+    image: '/images/hardware/hardware-softclose.webp',
+  },
+  {
+    id: 'tandem-drawers',
+    title: 'Tandem Drawer Systems',
+    description: 'Full-extension tandem systems for deep storage access with smooth operation.',
+    category: 'drawers',
+    image: '/images/hardware/hardware-tandem.webp',
+  },
+  {
+    id: 'corner-storage',
+    title: 'Corner Storage Solutions',
+    description: 'Carousel and pull-out solutions that turn dead corners into organized, accessible storage.',
+    category: 'storage',
+    image: '/images/hardware/hardware-corner.webp',
+  },
+  {
+    id: 'tall-units',
+    title: 'Tall Units',
+    description: 'Floor-to-ceiling units maximizing vertical space with organized pull-out shelves.',
+    category: 'storage',
+    image: '/images/hardware/hardware-tall.webp',
+  },
+  {
+    id: 'pantry-solutions',
+    title: 'Pantry Solutions',
+    description: 'Dedicated pantry storage with internal LED lighting and organized compartments.',
+    category: 'storage',
+    image: '/images/hardware/hardware-pantry.webp',
+  },
+  {
+    id: 'lift-up-systems',
+    title: 'Lift-Up Systems',
+    description: 'Wall cabinet doors that lift smoothly upward for unobstructed access.',
+    category: 'mechanisms',
+    image: '/images/hardware/hardware-liftup.webp',
+  },
+  {
+    id: 'bottle-pullouts',
+    title: 'Bottle Pull-Outs',
+    description: 'Narrow pull-out units designed to keep bottles, oils and condiments organized and within reach.',
+    category: 'organizers',
+    image: '/images/hardware/hardware-bottle.webp',
+  },
+  {
+    id: 'cutlery-organizers',
+    title: 'Cutlery Organizers',
+    description: 'Precision-fitted drawer inserts that keep every utensil in its proper place.',
+    category: 'organizers',
+    image: '/images/hardware/hardware-cutlery.webp',
+  },
+];

@@ -1,0 +1,158 @@
+// Vite eager glob imports all work project images
+const workImageFiles = import.meta.glob('../assets/work/*.jpeg', { eager: true, import: 'default' });
+
+function getWorkImg(filename) {
+  const key = `../assets/work/${filename}`;
+  return workImageFiles[key] || '';
+}
+
+export const projects = [
+  {
+    id: 'project-01',
+    title: 'Royal Sapphire L-Shaped Kitchen',
+    location: 'Vijay Nagar, Indore',
+    layout: 'L-Shaped',
+    style: 'Contemporary Royal Blue & Glass',
+    description: 'A stunning midnight blue kitchen featuring fluted glass upper cabinetry, soft-close drawer stacks, undermount LED profiles, and engineered quartz countertops.',
+    image: getWorkImg('project-kitchen-blue-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-blue-01.jpeg'),
+      getWorkImg('project-kitchen-blue-02.jpeg'),
+      getWorkImg('project-kitchen-blue-03.jpeg'),
+    ],
+    featured: true,
+  },
+  {
+    id: 'project-02',
+    title: 'Teal & Frost Parallel Kitchen',
+    location: 'Palasia, Indore',
+    layout: 'Parallel',
+    style: 'Modern Teal & High-Gloss White',
+    description: 'A dual-counter layout featuring a tall pantry pull-out unit, integrated breakfast counter, and ergonomic work triangle for active family cooking.',
+    image: getWorkImg('project-kitchen-teal-white-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-teal-white-01.jpeg'),
+      getWorkImg('project-kitchen-teal-white-02.jpeg'),
+      getWorkImg('project-kitchen-teal-white-03.jpeg'),
+    ],
+    featured: true,
+  },
+  {
+    id: 'project-03',
+    title: 'Warm Walnut Family Kitchen',
+    location: 'Nipania, Indore',
+    layout: 'L-Shaped',
+    style: 'Natural Woodgrain & Warm Sand',
+    description: 'Engineered with Action Tesa HDMR core, tandem deep-pot drawers, bi-fold overhead cabinets, and warm ambient backlighting.',
+    image: getWorkImg('project-kitchen-warm-wood-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-warm-wood-01.jpeg'),
+      getWorkImg('project-kitchen-warm-wood-02.jpeg'),
+      getWorkImg('project-kitchen-warm-wood-03.jpeg'),
+    ],
+    featured: true,
+  },
+  {
+    id: 'project-04',
+    title: 'Rustic Oak Luxury Island Kitchen',
+    location: 'AB Road, Indore',
+    layout: 'Island',
+    style: 'Rustic Oak & Matte Slate',
+    description: 'Expansive open villa kitchen with a central prep island, built-in appliance garage, concealed pantry, and Blum soft-close fittings.',
+    image: getWorkImg('project-kitchen-rustic-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-rustic-01.jpeg'),
+      getWorkImg('project-kitchen-rustic-02.jpeg'),
+      getWorkImg('project-kitchen-rustic-03.jpeg'),
+    ],
+    featured: true,
+  },
+  {
+    id: 'project-05',
+    title: 'Emerald Luxe Compact Kitchen',
+    location: 'Scheme 78, Indore',
+    layout: 'Straight',
+    style: 'Jewel Tone Emerald & Brass',
+    description: 'Space-maximizing straight-line kitchen with jewel-toned matte shutters, brushed brass edge profiles, and deep spice pull-outs.',
+    image: getWorkImg('project-kitchen-emerald-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-emerald-01.jpeg'),
+      getWorkImg('project-kitchen-emerald-02.jpeg'),
+    ],
+    featured: false,
+  },
+  {
+    id: 'project-06',
+    title: 'Pristine White U-Shape Kitchen',
+    location: 'Bhopal, MP',
+    layout: 'U-Shaped',
+    style: 'Ultra-Gloss White & Gold Accents',
+    description: 'Wraparound U-shaped architecture featuring seamless handleless profiles, quartz slab waterfall edge, and heavy-duty tandem runners.',
+    image: getWorkImg('project-kitchen-white-gold-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-white-gold-01.jpeg'),
+      getWorkImg('project-kitchen-white-gold-02.jpeg'),
+    ],
+    featured: false,
+  },
+  {
+    id: 'project-07',
+    title: 'Champagne Metallic Urban Kitchen',
+    location: 'Mahalaxmi Nagar, Indore',
+    layout: 'U-Shaped',
+    style: 'Champagne Metallic & Charcoal',
+    description: 'Engineered for optimal corner utility with Magic Corner pull-out carousels and fingerprint-resistant Skydecor acrylic shutters.',
+    image: getWorkImg('project-kitchen-champagne-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-champagne-01.jpeg'),
+      getWorkImg('project-kitchen-champagne-02.jpeg'),
+    ],
+    featured: false,
+  },
+  {
+    id: 'project-08',
+    title: 'Charcoal Minimalist Studio Kitchen',
+    location: 'Rau, Indore',
+    layout: 'Island',
+    style: 'Matte Charcoal & Terrazzo',
+    description: 'Sophisticated architectural kitchen with concealed appliance housing, anti-scratch matte surfaces, and silent Blum motion technology.',
+    image: getWorkImg('project-kitchen-charcoal-01.jpeg'),
+    images: [
+      getWorkImg('project-kitchen-charcoal-01.jpeg'),
+      getWorkImg('project-kitchen-charcoal-02.jpeg'),
+    ],
+    featured: false,
+  },
+  {
+    id: 'project-09',
+    title: 'Architectural Wardrobe & Storage Suite',
+    location: 'South Tukoganj, Indore',
+    layout: 'Custom',
+    style: 'Fluted Acoustic Panels & Sliding Glass',
+    description: 'Floor-to-ceiling modular wardrobe system with integrated sensor lighting, velvet accessory drawers, and tinted glass sliding doors.',
+    image: getWorkImg('project-wardrobe-matte-01.jpeg'),
+    images: [
+      getWorkImg('project-wardrobe-matte-01.jpeg'),
+      getWorkImg('project-wardrobe-matte-02.jpeg'),
+      getWorkImg('project-wardrobe-sliding-01.jpeg'),
+      getWorkImg('project-wardrobe-sliding-02.jpeg'),
+    ],
+    featured: false,
+  },
+  {
+    id: 'project-10',
+    title: 'Custom Millwork, TV Console & Vanity',
+    location: 'Old Palasia, Indore',
+    layout: 'Custom',
+    style: 'Floating Console & Moisture-Proof Vanity',
+    description: 'Precision-cut TV lounge paneling with backlit marble laminate and floating waterproof bathroom vanity units with soft-close Blum drawers.',
+    image: getWorkImg('project-tv-unit-lounge-01.jpeg'),
+    images: [
+      getWorkImg('project-tv-unit-lounge-01.jpeg'),
+      getWorkImg('project-tv-unit-lounge-02.jpeg'),
+      getWorkImg('project-vanity-bathroom-01.jpeg'),
+      getWorkImg('project-vanity-bathroom-02.jpeg'),
+    ],
+    featured: false,
+  },
+];

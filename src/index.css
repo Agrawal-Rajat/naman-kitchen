@@ -1,0 +1,753 @@
+/* ====================================================
+   NAMAN KITCHEN — Central Design System
+   Warm Minimalism + Architectural Precision
+   ==================================================== */
+
+@import "tailwindcss";
+@source "../index.html";
+@source "./**/*.{js,jsx}";
+
+/* ====================================================
+   CUSTOM THEME (Tailwind v4 CSS-first)
+   ==================================================== */
+
+@theme {
+  /* --- Color Palette: 60/30/10 --- */
+  --color-ivory: #E7ECE3;       /* Refined architectural light olive (slightly richer) */
+  --color-ivory-light: #EFF4EB; /* Soft porcelain sage highlight */
+  --color-ivory-dark: #D6E0D0;  /* Subtle muted olive tone for cards & surfaces */
+
+  --color-espresso: #211D18;
+  --color-espresso-light: #28231E;
+  --color-espresso-mid: #3A332B;
+
+  --color-naman-indigo: #342B70;
+  --color-naman-indigo-light: #4A3F8F;
+  --color-naman-red: #E51D2A;
+  --color-naman-red-dark: #C4181F;
+
+  /* Supporting material colors */
+  --color-walnut: #5C4033;
+  --color-stone: #C4B8A5;
+  --color-brass: #B8A04A;
+  --color-olive: #6B7F5E;
+  --color-warm-gray: #9A938A;
+  --color-metal: #3D3D3D;
+
+  /* Functional */
+  --color-success: #2D7D4F;
+  --color-error: #D93025;
+  --color-warning: #E8A317;
+
+  /* --- Typography --- */
+  --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+
+  /* --- Border Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* --- Shadows (warm, architectural) --- */
+  --shadow-subtle: 0 2px 8px rgba(33, 29, 24, 0.06);
+  --shadow-card: 0 4px 16px rgba(33, 29, 24, 0.08);
+  --shadow-lift: 0 8px 32px rgba(33, 29, 24, 0.10);
+  --shadow-inset: inset 0 1px 3px rgba(33, 29, 24, 0.08);
+
+  /* --- Transitions --- */
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 500ms;
+
+  /* --- Max widths --- */
+  --max-w-site: 1440px;
+  --max-w-wide: 1600px;
+}
+
+/* ====================================================
+   BASE STYLES
+   ==================================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-espresso);
+    background-color: var(--color-ivory);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--color-espresso);
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.8vw, 3.25rem);
+    font-weight: 400;
+  }
+
+  h3 {
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+    font-weight: 400;
+  }
+
+  h4 {
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    font-weight: 400;
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--color-espresso-mid);
+  }
+
+  small, .text-small {
+    font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+    font-family: var(--font-body);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  ::selection {
+    background-color: var(--color-naman-indigo);
+    color: var(--color-ivory);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-naman-indigo);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-ivory);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-warm-gray);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-espresso-mid);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-smooth);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ====================================================
+   REDUCED MOTION
+   ==================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ====================================================
+   UTILITY CLASSES
+   ==================================================== */
+
+.container-site {
+  width: 100%;
+  max-width: var(--max-w-site);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-site {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-site {
+    padding-inline: 4rem;
+  }
+}
+
+.section-spacing {
+  padding-block: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-block: 6rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-spacing {
+    padding-block: 8rem;
+  }
+}
+
+/* Kitchen-inspired divider line */
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-stone), transparent);
+  opacity: 0.4;
+}
+
+/* ====================================================
+   BUTTON & LINK HOVER EFFECTS - CABINET HANDLE DESIGN
+   ==================================================== */
+
+/* Kitchen Cabinet Handle Inspired Button System */
+.btn-magnetic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  /* Distinctive cabinet handle silhouette: structural left anchor with smooth grip curve */
+  border-radius: 6px 26px 26px 6px;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  border-left: 3.5px solid;
+  letter-spacing: 0.025em;
+  transition: transform var(--duration-fast) var(--ease-smooth),
+              box-shadow var(--duration-normal) var(--ease-smooth),
+              border-color var(--duration-normal) var(--ease-smooth),
+              background var(--duration-normal) var(--ease-smooth);
+}
+
+.btn-magnetic:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.btn-magnetic:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Primary Button: Deep Naman Indigo with Red Mounting Accent */
+.btn-primary {
+  background: #2D2B60;
+  color: #FFFFFF;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-left-color: #E51D2A;
+  box-shadow: 0 4px 16px rgba(45, 43, 96, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2D2B60 0%, #3B387E 40%, #E51D2A 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:hover {
+  border-left-color: #FF6B6B;
+  box-shadow: 0 8px 24px rgba(229, 29, 42, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Accent Button: Vibrant Naman Red with Brass Mounting Accent */
+.btn-accent {
+  background: #E51D2A;
+  color: #FFFFFF;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-left-color: #B8A04A;
+  box-shadow: 0 4px 16px rgba(229, 29, 42, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.btn-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #E51D2A 0%, #F97316 55%, #B8A04A 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.btn-accent:hover::before {
+  opacity: 1;
+}
+
+.btn-accent:hover {
+  border-left-color: #FCD34D;
+  box-shadow: 0 8px 26px rgba(249, 115, 22, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Secondary Outline Button */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  color: var(--color-espresso);
+  border: 1.5px solid var(--color-espresso-mid);
+  border-left: 3.5px solid var(--color-naman-indigo);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(45, 43, 96, 0.08) 0%, rgba(229, 29, 42, 0.08) 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.btn-outline:hover::before {
+  opacity: 1;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-naman-indigo);
+  border-left-color: var(--color-naman-red);
+  color: var(--color-naman-indigo);
+  box-shadow: 0 6px 18px rgba(45, 43, 96, 0.12);
+}
+
+/* ====================================================
+   HERO 4-PANEL & KITCHEN TILE GRID SYSTEM
+   ==================================================== */
+
+/* Architectural Kitchen Ceramic Subway & Square Tile Pattern */
+.hero-tile-grid {
+  background-color: transparent;
+  background-image: 
+    /* Crisp tile grout lines with increased definition */
+    linear-gradient(to right, rgba(45, 43, 96, 0.16) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(45, 43, 96, 0.16) 1.5px, transparent 1.5px),
+    /* Subtle glossy tile facet reflection */
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 60%, transparent 80%);
+  background-size: 48px 48px, 48px 48px, 48px 48px;
+}
+
+/* Subtle gentle floating animation for kitchen component modules */
+@keyframes hero-float-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hero-float-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+.animate-hero-float-1 {
+  animation: hero-float-gentle 6s ease-in-out infinite;
+}
+
+.animate-hero-float-2 {
+  animation: hero-float-gentle 7s ease-in-out infinite 1s;
+}
+
+.animate-hero-float-3 {
+  animation: hero-float-horizontal 8s ease-in-out infinite 0.5s;
+}
+
+.animate-hero-float-4 {
+  animation: hero-float-horizontal 7.5s ease-in-out infinite 1.5s;
+}
+
+/* Architectural Chimney Hood Styled Horizontal Wings (Light Refined Shade) */
+.chimney-wing-left {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 249, 244, 0.92) 50%, rgba(238, 243, 235, 0.88) 100%);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 3.5px solid var(--color-naman-red);
+  border-radius: 0 16px 4px 0;
+  box-shadow: 0 8px 24px rgba(45, 43, 96, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.chimney-wing-left::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(229, 29, 42, 0.4), var(--color-naman-red));
+}
+
+.chimney-wing-right {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 249, 244, 0.92) 50%, rgba(238, 243, 235, 0.88) 100%);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 3.5px solid var(--color-brass);
+  border-radius: 16px 0 0 4px;
+  box-shadow: 0 8px 24px rgba(45, 43, 96, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.chimney-wing-right::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--color-brass), rgba(184, 160, 74, 0.4), transparent);
+}
+
+/* Component Badge Pill */
+.hero-item-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(45, 43, 96, 0.1);
+  color: var(--color-espresso);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.hero-panel-card:hover .hero-item-badge {
+  background: #2D2B60;
+  color: #FFFFFF;
+  border-color: #2D2B60;
+  transform: translateY(-2px);
+}
+
+/* Nav Link Hover Underline Animation */
+.nav-link-item {
+  position: relative;
+  font-weight: 500;
+  color: var(--color-espresso);
+  padding: 0.25rem 0.125rem;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-naman-indigo), var(--color-naman-red));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+  border-radius: 2px;
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: var(--color-naman-indigo);
+}
+
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ====================================================
+   HERO FLOOR TEXTURE BACKGROUND LAYER
+   ==================================================== */
+
+.hero-floor-bg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-floor-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/src/assets/floor.png');
+  background-size: 460px auto;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.13;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-floor-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 85% 65% at 50% 50%, rgba(255, 255, 255, 0.72) 0%, rgba(246, 243, 237, 0.45) 60%, rgba(235, 230, 220, 0.85) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-floor-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ====================================================
+   KITCHEN-COMPONENT-INSPIRED CONTAINER SHAPES
+   ==================================================== */
+
+/* 1. Chimney Hood Tapered Container */
+.shape-chimney {
+  position: relative;
+  border-radius: 28px 28px 20px 20px;
+  box-shadow: 0 12px 36px rgba(45, 43, 96, 0.08);
+  border: 1px solid rgba(45, 43, 96, 0.08);
+  overflow: hidden;
+}
+
+.shape-chimney::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-naman-indigo), var(--color-naman-red), transparent);
+  border-radius: 0 0 4px 4px;
+  z-index: 10;
+}
+
+/* 2. L-Counter Architectural Asymmetric Shape */
+.shape-l-counter {
+  position: relative;
+  border-radius: 36px 12px 28px 12px;
+  border: 1px solid rgba(45, 43, 96, 0.08);
+  box-shadow: 0 10px 30px rgba(33, 29, 24, 0.06);
+  overflow: hidden;
+}
+
+.shape-l-counter::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 72px;
+  height: 4.5px;
+  background: linear-gradient(90deg, var(--color-naman-red), var(--color-brass));
+  border-radius: 0 4px 0 0;
+  z-index: 10;
+}
+
+/* 3. Drawer-Face Container with Horizontal Grip Trim */
+.shape-drawer-face {
+  position: relative;
+  border-radius: 20px;
+  border: 1.5px solid rgba(45, 43, 96, 0.1);
+  box-shadow: 0 6px 20px rgba(33, 29, 24, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+.shape-drawer-face::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #FAF7F0 0%, #B8A04A 50%, #7D641E 100%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* 4. Cabinet Shaker-Framed Container */
+.shape-cabinet {
+  position: relative;
+  border-radius: 24px;
+  border: 2px solid rgba(45, 43, 96, 0.08);
+  box-shadow: 0 8px 24px rgba(33, 29, 24, 0.06);
+  padding: 4px;
+}
+
+.shape-cabinet-inner {
+  border-radius: 18px;
+  border: 1px solid rgba(45, 43, 96, 0.06);
+  background: inherit;
+  height: 100%;
+}
+
+/* 5. Backsplash Textured Container */
+.shape-backsplash {
+  position: relative;
+  background-image: 
+    linear-gradient(rgba(45, 43, 96, 0.04) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(45, 43, 96, 0.04) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+}
+
+/* ====================================================
+   DRAWER PROJECT CARD COMPONENT
+   Realistic Cabinet Drawer with Metallic Handle & Smooth Reveal
+   ==================================================== */
+
+.drawer-card-box {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1.5px solid rgba(45, 43, 96, 0.12);
+  box-shadow: 0 10px 30px rgba(33, 29, 24, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+}
+
+.drawer-card-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(45, 43, 96, 0.14), 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Drawer Top Face Panel with Metal Handle */
+.drawer-face-panel {
+  position: relative;
+  background: linear-gradient(180deg, #FBF9F4 0%, #EFE9DE 65%, #E2D9CB 100%);
+  border-bottom: 2px solid rgba(45, 43, 96, 0.12);
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 6px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  z-index: 15;
+}
+
+/* Polished Dual-Tone Brushed Handle */
+.drawer-handle-bar {
+  width: 120px;
+  height: 10px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #D4AF37 35%, #997A15 75%, #5E4A0C 100%);
+  border-radius: 999px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 8px;
+  position: relative;
+}
+
+.drawer-handle-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  pointer-events: none;
+}
+
+.drawer-handle-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3A332B;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* ====================================================
+   CONTINUOUS CHAIN MARQUEE TICKER
+   ==================================================== */
+
+@keyframes marquee-chain-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-chain {
+  display: flex;
+  width: max-content;
+  animation: marquee-chain-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-chain:hover {
+  animation-play-state: paused;
+}
+
+.mask-edge-fade {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+
+
