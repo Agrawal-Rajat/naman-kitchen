@@ -2,6 +2,13 @@ import React from 'react';
 import { ShieldCheck, Weight, Flame, Sparkles, Activity, CheckCircle2 } from 'lucide-react';
 import Reveal from '../../components/motion/Reveal';
 
+import bgImg1 from '../../assets/work/project-kitchen-blue-02.jpeg';
+import bgImg2 from '../../assets/work/project-kitchen-charcoal-02.jpeg';
+import bgImg3 from '../../assets/work/project-kitchen-rustic-02.jpeg';
+import bgImg4 from '../../assets/work/project-kitchen-warm-wood-02.jpeg';
+
+const containerBgImages = [bgImg1, bgImg2, bgImg3, bgImg4];
+
 export default function HardwareFeatureHighlight() {
   const specs = [
     {
@@ -75,16 +82,24 @@ export default function HardwareFeatureHighlight() {
               <Reveal key={i} direction="up" delay={0.15 + i * 0.1}>
                 <div className="relative group/spec h-full flex flex-col justify-between rounded-2xl bg-white border border-[#D5E0CF] p-6 sm:p-7 shadow-[0_6px_20px_rgba(45,60,40,0.06)] hover:shadow-[0_14px_32px_rgba(45,60,40,0.12)] hover:border-[#859581]/60 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
                   
+                  {/* Background Image with 10% opacity, turning to 20% on hover */}
+                  <img
+                    src={containerBgImages[i]}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-10 group-hover/spec:opacity-20 transition-opacity duration-300 z-0"
+                    aria-hidden="true"
+                  />
+
                   {/* Top Brass Hardware Corner Rivets */}
-                  <div className="absolute top-3 left-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center">
+                  <div className="absolute top-3 left-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center z-10">
                     <div className="w-0.5 h-0.5 rounded-full bg-[#3D3320]" />
                   </div>
-                  <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center z-10">
                     <div className="w-0.5 h-0.5 rounded-full bg-[#3D3320]" />
                   </div>
 
                   {/* Header & Description */}
-                  <div className="pt-2">
+                  <div className="pt-2 relative z-10">
                     <div className="mb-5">
                       {/* Icon Box */}
                       <div className="w-12 h-12 rounded-xl bg-[#EDF3EA] border border-[#CAD8C5] flex items-center justify-center text-[#364634] shadow-2xs group-hover/spec:scale-105 group-hover/spec:bg-[var(--color-naman-indigo)] group-hover/spec:text-white transition-all duration-300">
@@ -102,7 +117,7 @@ export default function HardwareFeatureHighlight() {
                   </div>
 
                   {/* Bottom Technical Benchmark Plate */}
-                  <div className="pt-4 mt-6 border-t border-[#E2EADF] flex items-center justify-between text-xs">
+                  <div className="pt-4 mt-6 border-t border-[#E2EADF] flex items-center justify-between text-xs relative z-10">
                     <span className="text-[11px] text-[#2C382A] font-semibold flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-naman-red)]" />
                       {spec.techBadge}
