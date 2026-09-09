@@ -2,6 +2,13 @@ import React from 'react';
 import { ShieldCheck, Ruler, Users, HeartHandshake, Lightbulb, Sparkles } from 'lucide-react';
 import Reveal from '../../components/motion/Reveal';
 
+import bgImg1 from '../../assets/work/project-kitchen-blue-01.jpeg';
+import bgImg2 from '../../assets/work/project-kitchen-charcoal-01.jpeg';
+import bgImg3 from '../../assets/work/project-kitchen-rustic-01.jpeg';
+import bgImg4 from '../../assets/work/project-kitchen-teal-white-01.jpeg';
+
+const containerBgImages = [bgImg1, bgImg2, bgImg3, bgImg4];
+
 export default function CraftsmanshipStandards() {
   const standards = [
     {
@@ -94,9 +101,16 @@ export default function CraftsmanshipStandards() {
                 return (
                   <div
                     key={i}
-                    className="relative group rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-md border border-white/80 p-5 sm:p-7 shadow-[0_8px_24px_rgba(45,43,96,0.04)] hover:shadow-[0_16px_36px_rgba(45,43,96,0.18)] hover:bg-white hover:border-[var(--color-naman-indigo)]/60 transition-all duration-300 flex flex-col justify-between"
+                    className="relative group rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-md border border-white/80 p-5 sm:p-7 shadow-[0_8px_24px_rgba(45,43,96,0.04)] hover:shadow-[0_16px_36px_rgba(45,43,96,0.18)] hover:bg-white hover:border-[var(--color-naman-indigo)]/60 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                   >
-                    <div>
+                    {/* Background Image */}
+                    <img
+                      src={containerBgImages[i]}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+                      aria-hidden="true"
+                    />
+                    <div className="relative z-10">
                       {/* Icon Box */}
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-naman-indigo)] to-[var(--color-naman-indigo-light)] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform duration-300">
@@ -115,7 +129,7 @@ export default function CraftsmanshipStandards() {
                     </div>
 
                     {/* Bottom Status Indicator */}
-                    <div className="pt-3 mt-4 border-t border-[#E5EDE2] flex items-center justify-between text-xs">
+                    <div className="relative z-10 pt-3 mt-4 border-t border-[#E5EDE2] flex items-center justify-between text-xs">
                       <span className="text-[11px] text-[var(--color-espresso-mid)] flex items-center gap-1.5 font-medium">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-naman-indigo)] shadow-[0_0_4px_var(--color-naman-indigo)] animate-pulse" />
                         Guaranteed Benchmark

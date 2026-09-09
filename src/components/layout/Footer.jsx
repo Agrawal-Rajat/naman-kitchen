@@ -142,8 +142,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Naman Kitchen Studio. All rights reserved. Life Long Partner.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style={{ color: '#E8DFD0' }}>
+          <p style={{ color: '#E8DFD0' }}>© {new Date().getFullYear()} Naman Kitchen Studio. All rights reserved. Life Long Partner.</p>
           <div className="flex items-center gap-6">
             <span>Intelligent Design for Modern Homes</span>
             <span className="hidden sm:inline">|</span>

@@ -1,13 +1,20 @@
 import React from 'react';
 import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import Button from '../../components/common/Button';
+import ctaBg from '../../assets/cta.png';
 
 export default function FranchiseOpportunity() {
   return (
     <section className="py-16 md:py-20 bg-[var(--color-ivory-light)] border-t border-black/5">
       <div className="container-site">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#2D2B60] to-[var(--color-espresso)] text-white shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#1D201A] text-white shadow-xl relative overflow-hidden">
+          {/* Background CTA Image */}
+          <div
+            className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-10 z-0"
+            style={{ backgroundImage: `url(${ctaBg})` }}
+            aria-hidden="true"
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5 text-[var(--color-brass)]" />

@@ -7,9 +7,9 @@ import ctaBg from '../../assets/cta.png';
 export default function ConsultationCta() {
   return (
     <section className="section-spacing bg-[#1D201A] text-white relative overflow-hidden shape-chimney mx-2 sm:mx-4 lg:mx-8 my-6 sm:my-10">
-      {/* Background CTA Kitchen Ambience Image with Soft Opacity */}
+      {/* Background CTA Kitchen Ambience Image with 10% Opacity */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-20 z-0"
+        className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-10 z-0"
         style={{ backgroundImage: `url(${ctaBg})` }}
         aria-hidden="true"
       />

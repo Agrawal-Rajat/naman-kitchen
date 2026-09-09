@@ -3,6 +3,13 @@ import { Target, Users, Shield, BadgePercent, CheckCircle2 } from 'lucide-react'
 import SectionHeading from '../../components/common/SectionHeading';
 import Reveal from '../../components/motion/Reveal';
 
+import bgImg1 from '../../assets/work/project-kitchen-champagne-01.jpeg';
+import bgImg2 from '../../assets/work/project-kitchen-warm-wood-01.jpeg';
+import bgImg3 from '../../assets/work/project-kitchen-white-gold-01.jpeg';
+import bgImg4 from '../../assets/work/project-kitchen-emerald-01.jpeg';
+
+const containerBgImages = [bgImg1, bgImg2, bgImg3, bgImg4];
+
 export default function WhyNamanKitchen() {
   const pillars = [
     {
@@ -91,8 +98,15 @@ export default function WhyNamanKitchen() {
                     />
 
                     {/* Inner White Card Pod with Exact Current Content */}
-                    <div className="relative z-10 p-6 sm:p-7 rounded-2xl bg-white border border-[#D2DCD0] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group">
-                      <div>
+                    <div className="relative z-10 p-6 sm:p-7 rounded-2xl bg-white border border-[#D2DCD0] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group overflow-hidden">
+                      {/* Background Image with low opacity */}
+                      <img
+                        src={containerBgImages[idx]}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10">
                         {/* Header Row */}
                         <div className="flex items-center justify-between mb-5">
                           <div className="w-12 h-12 rounded-xl bg-[var(--color-ivory-light)] text-[var(--color-naman-indigo)] flex items-center justify-center border border-[#E0D8C8] group-hover:scale-105 transition-transform duration-300">
@@ -112,7 +126,7 @@ export default function WhyNamanKitchen() {
                         </p>
                       </div>
 
-                      <div className="mt-6 pt-4 border-t border-[#EAE5D9] flex items-center gap-2 text-xs font-semibold text-[var(--color-naman-indigo)]">
+                      <div className="relative z-10 mt-6 pt-4 border-t border-[#EAE5D9] flex items-center gap-2 text-xs font-semibold text-[var(--color-naman-indigo)]">
                         <CheckCircle2 className="w-4 h-4 text-[var(--color-naman-red)]" />
                         <span>Verified Company Standard</span>
                       </div>
