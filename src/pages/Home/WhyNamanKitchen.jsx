@@ -40,36 +40,83 @@ export default function WhyNamanKitchen() {
           subtitle="Built on honesty, personal attention, and meticulous engineering since 2017. Here is what sets Naman Kitchen apart in Indore and Madhya Pradesh."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-12 relative">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
+            const isLeftColumn = idx % 2 === 0;
 
             return (
-              <Reveal key={idx} direction="up" delay={idx * 0.1}>
-                <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-white border border-[#D2DCD0] shadow-sm hover:shadow-md hover:border-[var(--color-naman-indigo)]/40 transition-all duration-300 flex flex-col justify-between group">
-                  <div>
-                    {/* Header Row */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-[var(--color-ivory-light)] text-[var(--color-naman-indigo)] flex items-center justify-center border border-[#E0D8C8] group-hover:scale-105 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-[var(--color-naman-indigo)]" />
+              <Reveal key={idx} direction="up" delay={idx * 0.15}>
+                <div className="relative h-full">
+                  {/* Horizontal Architectural Brass Pipe connecting left & right containers */}
+                  {isLeftColumn && (
+                    <div className="hidden md:flex absolute top-1/2 -right-12 -translate-y-1/2 w-12 h-4 items-center justify-between z-30 pointer-events-none">
+                      {/* Left Wall Mounting Collar */}
+                      <div className="w-1.5 h-4 bg-[#B89B43] rounded-xs shadow-xs border border-black/30" />
+                      
+                      {/* Polished Brass Pipe Body with Specular Highlight */}
+                      <div className="flex-1 h-2 bg-gradient-to-b from-[#FFF2C2] via-[#B89B43] to-[#5C450E] shadow-[0_2px_5px_rgba(0,0,0,0.35)] relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-75" />
                       </div>
-                      <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
-                        {pillar.badge}
-                      </span>
+
+                      {/* Right Wall Mounting Collar */}
+                      <div className="w-1.5 h-4 bg-[#B89B43] rounded-xs shadow-xs border border-black/30" />
                     </div>
+                  )}
 
-                    <h3 className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] font-display leading-snug mb-3 group-hover:text-[var(--color-naman-indigo)] transition-colors">
-                      {pillar.title}
-                    </h3>
+                  {/* Fluted Olive Outer Border Container Frame */}
+                  <div className="relative h-full rounded-[28px] overflow-hidden border-2 border-[var(--color-brass)]/45 bg-[#A1B28F] shadow-[0_16px_36px_rgba(45,43,96,0.08)] hover:shadow-[0_20px_48px_rgba(107,127,94,0.2)] transition-all duration-300 group/fluted p-1.5">
+                    
+                    {/* Top Ambient LED Glow Strip */}
+                    <div className="absolute top-0 inset-x-6 h-[3px] bg-gradient-to-r from-transparent via-[#FFF4C7] to-transparent shadow-[0_2px_8px_#FFE48A] z-20" />
 
-                    <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
-                      {pillar.description}
-                    </p>
-                  </div>
+                    {/* Vintage Reeded / Fluted Slat Background Lines */}
+                    <div
+                      className="absolute inset-0 pointer-events-none opacity-90 z-0"
+                      style={{
+                        backgroundImage: `
+                          repeating-linear-gradient(
+                            90deg,
+                            #829471 0px,
+                            #829471 4px,
+                            #687B57 5px,
+                            rgba(255, 255, 255, 0.7) 6px,
+                            #94A682 7px,
+                            #A1B28F 7px,
+                            #A1B28F 18px
+                          )
+                        `,
+                      }}
+                      aria-hidden="true"
+                    />
 
-                  <div className="mt-6 pt-4 border-t border-[#EAE5D9] flex items-center gap-2 text-xs font-semibold text-[var(--color-naman-indigo)]">
-                    <CheckCircle2 className="w-4 h-4 text-[var(--color-naman-red)]" />
-                    <span>Verified Company Standard</span>
+                    {/* Inner White Card Pod with Exact Current Content */}
+                    <div className="relative z-10 p-6 sm:p-7 rounded-2xl bg-white border border-[#D2DCD0] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group">
+                      <div>
+                        {/* Header Row */}
+                        <div className="flex items-center justify-between mb-5">
+                          <div className="w-12 h-12 rounded-xl bg-[var(--color-ivory-light)] text-[var(--color-naman-indigo)] flex items-center justify-center border border-[#E0D8C8] group-hover:scale-105 transition-transform duration-300">
+                            <Icon className="w-6 h-6 text-[var(--color-naman-indigo)]" />
+                          </div>
+                          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
+                            {pillar.badge}
+                          </span>
+                        </div>
+
+                        <h3 className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] font-display leading-snug mb-3 group-hover:text-[var(--color-naman-indigo)] transition-colors">
+                          {pillar.title}
+                        </h3>
+
+                        <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
+                          {pillar.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 pt-4 border-t border-[#EAE5D9] flex items-center gap-2 text-xs font-semibold text-[var(--color-naman-indigo)]">
+                        <CheckCircle2 className="w-4 h-4 text-[var(--color-naman-red)]" />
+                        <span>Verified Company Standard</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Reveal>

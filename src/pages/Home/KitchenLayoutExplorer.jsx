@@ -42,7 +42,7 @@ export default function KitchenLayoutExplorer() {
         </div>
 
         {/* Active Layout Showcase Card — Modular L-Counter Architectural Container */}
-        <KitchenShapeContainer shape="l-counter" className="p-6 sm:p-10 shadow-card bg-white relative overflow-hidden">
+        <KitchenShapeContainer shape="l-counter" bgClassName="bg-[#F5EFE6]" className="p-6 sm:p-10 shadow-card relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Visual Frame */}
             <div className="lg:col-span-7">
