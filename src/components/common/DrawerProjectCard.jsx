@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
-import { MapPin, ArrowRight, Eye, ChevronLeft, ChevronRight, Layers } from 'lucide-react';
-import Button from './Button';
+import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function DrawerProjectCard({
   project,
@@ -66,18 +65,7 @@ export default function DrawerProjectCard({
           <div className="drawer-handle-dot" />
         </div>
 
-        {/* Drawer Face Labeling */}
-        <div className="w-full flex items-center justify-between text-xs pt-1 px-1">
-          <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px] text-[var(--color-naman-indigo)]">
-            <Layers className="w-3.5 h-3.5 text-[var(--color-naman-red)]" />
-            <span>{project.layout}</span>
-          </div>
-
-          <span className="text-[10px] font-semibold text-[var(--color-warm-gray)] uppercase tracking-wider">
-            {isOpen ? 'Drawer Open • Slide Active' : 'Pull to Open'}
-          </span>
         </div>
-      </div>
 
       {/* ========================================================
           DRAWER INTERIOR: SMOOTH REVEAL + IMAGE CAROUSEL
@@ -167,49 +155,21 @@ export default function DrawerProjectCard({
           </div>
 
           {/* Project Details */}
-          <div className="space-y-3 flex-1 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-1.5 text-xs text-[var(--color-naman-red)] font-semibold mb-1">
-                <MapPin className="w-3.5 h-3.5 shrink-0" />
-                <span className="truncate">{project.location}</span>
-              </div>
+          <div className="space-y-2">
+            <h3
+              onClick={() => onSelectProject && onSelectProject(project)}
+              className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] hover:text-[var(--color-naman-indigo)] transition-colors cursor-pointer leading-snug"
+            >
+              {project.title}
+            </h3>
 
-              <h3
-                onClick={() => onSelectProject && onSelectProject(project)}
-                className="text-lg sm:text-xl font-normal text-[var(--color-espresso)] hover:text-[var(--color-naman-indigo)] transition-colors cursor-pointer leading-snug"
-              >
-                {project.title}
-              </h3>
+            <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] line-clamp-2 leading-relaxed">
+              {project.description}
+            </p>
 
-              <p className="text-[11px] font-semibold text-[var(--color-warm-gray)] uppercase tracking-wider mt-0.5">
-                {project.style}
-              </p>
-
-              <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] mt-2 line-clamp-2 leading-relaxed">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Action Bar */}
-            <div className="pt-3 border-t border-black/5 flex items-center justify-between gap-2">
-              <button
-                type="button"
-                onClick={() => onSelectProject && onSelectProject(project)}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-naman-indigo)] hover:text-[var(--color-naman-red)] transition-colors"
-              >
-                <Eye className="w-3.5 h-3.5" />
-                <span>View Details</span>
-              </button>
-
-              <Button
-                to={`/contact?project=${project.id}`}
-                variant="outline"
-                size="sm"
-                className="text-xs py-1 px-3"
-                icon={ArrowRight}
-              >
-                Inquire
-              </Button>
+            <div className="flex items-center gap-1.5 text-xs text-[var(--color-naman-red)] font-semibold pt-1">
+              <MapPin className="w-3.5 h-3.5 shrink-0" />
+              <span className="truncate">{project.location}</span>
             </div>
           </div>
 

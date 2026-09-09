@@ -84,7 +84,7 @@ export default function BrandPartners() {
               <React.Fragment key={idx}>
                 {/* Individual Chained Brand Card */}
                 <div className="w-[300px] sm:w-[350px] shrink-0 p-1">
-                  <div className="relative rounded-2xl bg-white border border-[#D5DDD0] shadow-[0_8px_24px_rgba(45,43,96,0.06)] p-6 sm:p-7 flex flex-col justify-between h-[280px] transition-all duration-300 hover:shadow-[0_12px_32px_rgba(45,43,96,0.12)] hover:-translate-y-1 group">
+                  <div className="relative rounded-2xl bg-white border border-[#D5DDD0] shadow-[0_8px_24px_rgba(45,43,96,0.06)] p-6 sm:p-7 flex flex-col justify-between min-h-[210px] h-full transition-all duration-300 hover:shadow-[0_12px_32px_rgba(45,43,96,0.12)] hover:-translate-y-1 group">
                     
                     {/* Top Brass Hardware Corner Rivets */}
                     <div className="absolute -top-2 left-6 w-3 h-3 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center">
@@ -96,33 +96,20 @@ export default function BrandPartners() {
 
                     {/* Card Content */}
                     <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD] shadow-xs">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD] shadow-2xs">
                           {partner.tag}
                         </span>
                         <Award className="w-4 h-4 text-[var(--color-brass)]" />
                       </div>
 
-                      <h3 className="text-xl font-bold text-[var(--color-espresso)] mb-1 font-display group-hover:text-[var(--color-naman-indigo)] transition-colors">
+                      <h3 className="text-xl font-bold text-[var(--color-espresso)] mb-2 font-display group-hover:text-[var(--color-naman-indigo)] transition-colors">
                         {partner.name}
                       </h3>
 
-                      <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-naman-red)] mb-2.5">
-                        {partner.category}
-                      </div>
-
-                      <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
                         {partner.detail}
                       </p>
-                    </div>
-
-                    {/* Bottom Quality Badge */}
-                    <div className="pt-3 mt-3 border-t border-[#E8EEE4] flex items-center justify-between text-xs font-semibold text-[var(--color-naman-indigo)]">
-                      <span className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[var(--color-naman-indigo)]" />
-                        <span>Authorized Partner</span>
-                      </span>
-                      <span className="text-[10px] font-mono text-[var(--color-warm-gray)]">ISO Standard</span>
                     </div>
                   </div>
                 </div>

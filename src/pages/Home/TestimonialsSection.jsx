@@ -26,46 +26,34 @@ function ChainConnector() {
 export default function TestimonialsSection() {
   const referenceStories = [
     {
-      highlight: '“Reference-Driven Growth Across Indore”',
-      body: 'Our biggest source of new homeowners isn’t loud advertising — it’s word-of-mouth recommendations from satisfied families who experience our punctuality and precision firsthand.',
-      tag: 'Customer Referral',
-      author: 'Family in Vijay Nagar',
-      location: 'Indore',
+      body: 'Our experience with Naman Kitchen was completely smooth. Their team maintained strict timelines, transparent pricing, and absolute precision from initial site measurements to final handover.',
+      author: 'Vikram Sharma',
+      designation: 'Homeowner',
     },
     {
-      highlight: '“Not Just Vendors — Life Long Partners”',
-      body: 'From first site measurement to post-installation service, our relationship doesn’t end when the final drawer is installed. We remain available for maintenance and upgrades.',
-      tag: 'Service Culture',
-      author: 'Architect S. Mehta',
-      location: 'South Tukoganj',
+      body: 'As an architect, I value partners who execute complex modular designs without constant oversight. Naman Kitchen handles hardware details and acrylic finishes with extreme precision.',
+      author: 'Ar. Sunil Mehta',
+      designation: 'Principal Architect',
     },
     {
-      highlight: '“Direct Site Consultation & Guidance”',
-      body: 'Visiting client homes personally allows us to recommend solutions that fit actual family routines and budget limits, preventing unnecessary contractor expenses.',
-      tag: 'Transparency',
-      author: 'Homeowner in Nipania',
-      location: 'Indore',
+      body: 'They personally inspected our kitchen layout and guided us on optimizing storage for daily Indian cooking. Their advice saved us from costly design mistakes and extra expenses.',
+      author: 'Ananya Agrawal',
+      designation: 'Homeowner',
     },
     {
-      highlight: '“Flawless Finish & Precision Alignment”',
-      body: 'The German tandem soft-close tracks and shutter alignments were completed on the exact committed handover date with zero post-work mess left behind.',
-      tag: 'Craftsmanship',
-      author: 'Dr. V. Sharma',
-      location: 'Bhopal',
+      body: 'The German tandem drawer channels and acrylic shutters were delivered and installed right on schedule. Their post-installation service and cleanup was truly remarkable.',
+      author: 'Dr. V. K. Sharma',
+      designation: 'Consultant Surgeon',
     },
     {
-      highlight: '“Complete Customization for Indian Cooking”',
-      body: 'Heavy spice racks, boiling-water resistant plywood, and high-suction chimney clearances were planned perfectly for our traditional daily kitchen routine.',
-      tag: 'Custom Engineered',
-      author: 'The Agrawal Residence',
-      location: 'Super Corridor',
+      body: 'Heavy stainless steel baskets, boiling-water resistant plywood, and chimney clearances were planned thoughtfully. 3 years later, everything still functions like day one.',
+      author: 'Priya & Rajesh Joshi',
+      designation: 'Villa Owners',
     },
     {
-      highlight: '“Transparent Pricing with No Hidden Costs”',
-      body: 'Detailed itemized quotes with clear brand warranty cards for every single hinge and drawer runner. Unmatched honesty in the modular kitchen industry.',
-      tag: 'Trusted Partner',
-      author: 'Interior Consultant',
-      location: 'Indore',
+      body: 'They provided itemized quotes upfront with official warranty certificates for every single hinge and runner. The most honest modular kitchen team we have worked with.',
+      author: 'Sanjay Gupta',
+      designation: 'Interior Consultant',
     },
   ];
 
@@ -90,7 +78,7 @@ export default function TestimonialsSection() {
               <React.Fragment key={idx}>
                 {/* Individual Chained Review Pod */}
                 <div className="w-[320px] sm:w-[380px] shrink-0 p-1">
-                  <div className="relative rounded-2xl bg-white border border-[#D5DDD0] shadow-[0_8px_24px_rgba(45,43,96,0.06)] p-6 sm:p-7 flex flex-col justify-between h-[300px] transition-all duration-300 hover:shadow-[0_12px_32px_rgba(45,43,96,0.12)] hover:-translate-y-1 group">
+                  <div className="relative rounded-2xl bg-white border border-[#D5DDD0] shadow-[0_8px_24px_rgba(45,43,96,0.06)] p-6 sm:p-7 flex flex-col justify-between min-h-[270px] h-full transition-all duration-300 hover:shadow-[0_12px_32px_rgba(45,43,96,0.12)] hover:-translate-y-1 group">
                     
                     {/* Top Brass Fastener Rivets */}
                     <div className="absolute -top-2 left-6 w-3 h-3 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center">
@@ -100,35 +88,30 @@ export default function TestimonialsSection() {
                       <div className="w-1 h-1 rounded-full bg-[#3D3320]" />
                     </div>
 
-                    {/* Content Header */}
+                    {/* Content Body */}
                     <div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-1 text-[var(--color-brass)]">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-[#B89B43] text-[#B89B43]" />
+                            <Star key={i} className="w-3.5 h-3.5 fill-[#B89B43] text-[#B89B43]" />
                           ))}
                         </div>
-                        <Quote className="w-6 h-6 text-[#A1B28F]/40 group-hover:text-[var(--color-naman-indigo)]/40 transition-colors" />
+                        <Quote className="w-5 h-5 text-[#A1B28F]/40 group-hover:text-[var(--color-naman-indigo)]/40 transition-colors" />
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-normal text-[var(--color-espresso)] mb-2.5 font-display group-hover:text-[var(--color-naman-indigo)] transition-colors leading-snug">
-                        {story.highlight}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed line-clamp-4">
-                        {story.body}
+                      <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed line-clamp-5 font-normal italic">
+                        “{story.body}”
                       </p>
                     </div>
 
-                    {/* Bottom Verification Footer */}
-                    <div className="pt-3.5 mt-3 border-t border-[#E8EEE4] flex items-center justify-between text-xs">
-                      <span className="flex items-center gap-1.5 font-semibold text-[var(--color-naman-indigo)]">
-                        <CheckCircle className="w-3.5 h-3.5 text-[var(--color-naman-red)] shrink-0" />
-                        <span className="truncate max-w-[150px]">{story.tag}</span>
-                      </span>
-                      <span className="text-[11px] font-mono text-[var(--color-warm-gray)]">
-                        {story.location}
-                      </span>
+                    {/* Bottom Reviewer Info */}
+                    <div className="pt-3 mt-4 border-t border-[#E8EEE4] flex flex-col justify-center">
+                      <h4 className="text-xs sm:text-sm font-bold text-[var(--color-naman-indigo)] group-hover:text-[var(--color-naman-red)] transition-colors">
+                        {story.author}
+                      </h4>
+                      <p className="text-[11px] font-medium text-[var(--color-warm-gray)]">
+                        {story.designation}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -4,22 +4,22 @@ import Reveal from '../../components/motion/Reveal';
 export default function BrandStatement() {
   return (
     <section className="relative overflow-hidden py-16 md:py-20 bg-[var(--color-ivory-light)] border-y border-black/5">
-      {/* Vintage Modular Kitchen Fluted / Reeded Vertical Lines Background */}
+      {/* Soft Subtle Fluted Vertical Lines Background */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-50 z-0"
+        className="absolute inset-0 pointer-events-none opacity-15 z-0"
         style={{
           backgroundImage: `
             repeating-linear-gradient(
               90deg,
-              rgba(45, 43, 96, 0.25) 0px,
-              rgba(45, 43, 96, 0.25) 1.5px,
+              rgba(45, 43, 96, 0.12) 0px,
+              rgba(45, 43, 96, 0.12) 1.5px,
               transparent 1.5px,
               transparent 28px
             ),
             repeating-linear-gradient(
               90deg,
-              rgba(255, 255, 255, 0.85) 1.5px,
-              rgba(255, 255, 255, 0.85) 2.5px,
+              rgba(255, 255, 255, 0.6) 1.5px,
+              rgba(255, 255, 255, 0.6) 2.5px,
               transparent 2.5px,
               transparent 28px
             )

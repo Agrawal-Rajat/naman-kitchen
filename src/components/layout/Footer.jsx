@@ -23,7 +23,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--color-espresso)] text-white/80 pt-16 md:pt-20 pb-12 border-t border-white/10">
+    <footer className="bg-[#263324] text-white/80 pt-16 md:pt-20 pb-12 border-t border-white/10">
       <div className="container-site">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-white/10">

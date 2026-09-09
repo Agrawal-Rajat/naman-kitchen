@@ -54,7 +54,7 @@ export default function Hero() {
   const leftItem = KITCHEN_COMPONENTS[(3 - rotationStep + 4) % 4];
 
   return (
-    <section className="relative overflow-hidden min-h-[calc(100svh-3.75rem)] lg:min-h-[calc(100svh-4rem)] flex flex-col justify-center items-center py-3 sm:py-5 bg-gradient-to-b from-[#E7ECE3] via-[#DCE4D7] to-[#E7ECE3]">
+    <section className="relative overflow-hidden min-h-[calc(100svh-3.75rem)] lg:min-h-[calc(100svh-4rem)] flex flex-col justify-start lg:justify-center items-center py-1 sm:py-5 bg-gradient-to-b from-[#E7ECE3] via-[#DCE4D7] to-[#E7ECE3]">
       {/* Full-Cover Background Floor Texture with low opacity */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none opacity-15 mix-blend-multiply z-0"
@@ -113,7 +113,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Mobile-Only Chimney Wings Row (< md) */}
-      <div className="flex md:hidden w-full items-center justify-between px-2 pt-1 z-30 gap-2">
+      <div className="flex md:hidden w-full items-center justify-between px-2 pt-0 z-30 gap-1.5">
         <div className="chimney-wing-left py-1.5 px-3 flex items-center gap-1.5 flex-1">
           <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-naman-red)] shrink-0" />
           <span className="text-[11px] font-black text-[var(--color-espresso)] tracking-wide uppercase">
@@ -131,12 +131,15 @@ export default function Hero() {
       {/* ========================================================
           MAIN FULL-WIDTH COMPOSITION CONTAINER
           ======================================================== */}
-      <div className="w-full max-w-[98rem] mx-auto relative z-10 px-2 sm:px-4 lg:px-6 flex flex-col items-center gap-1 sm:gap-2">
+      {/* ========================================================
+          MAIN FULL-WIDTH COMPOSITION CONTAINER
+          ======================================================== */}
+      <div className="w-full max-w-[98rem] mx-auto my-auto lg:my-0 relative z-10 px-2 sm:px-4 lg:px-6 flex flex-col items-center gap-1 sm:gap-2">
         
         {/* ========================================================
-            TOP LEVEL: TOP ROTATING IMAGE (Anchored closer to top end)
+            TOP LEVEL: TOP ROTATING IMAGE (Desktop Only)
             ======================================================== */}
-        <div className="w-full flex justify-center z-20 pt-1">
+        <div className="hidden lg:flex w-full justify-center z-20 pt-1">
           <AnimatePresence mode="wait">
             <motion.div
               key={`top-${topItem.id}`}
@@ -151,7 +154,7 @@ export default function Hero() {
                 <topItem.icon className="w-3 h-3 text-[var(--color-naman-indigo)]" />
                 <span>{topItem.name}</span>
               </div>
-              {/* Top Component Image (Larger) */}
+              {/* Top Component Image */}
               <img
                 src={topItem.src}
                 alt={topItem.name}
@@ -164,11 +167,11 @@ export default function Hero() {
 
         {/* ========================================================
             MIDDLE ROW:
-            Left Image (Close to edge) | Spacious Center Editorial Content | Right Image (Close to edge)
+            Left Image (Desktop) | Center Content (Mobile Top / Desktop Center) | Right Image (Desktop)
             ======================================================== */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4 items-center py-2">
           
-          {/* LEFT ROTATING IMAGE (Flush closer to left end, larger) */}
+          {/* LEFT ROTATING IMAGE (Desktop Only) */}
           <div className="hidden lg:flex lg:col-span-3 justify-start z-20">
             <AnimatePresence mode="wait">
               <motion.div
@@ -192,29 +195,31 @@ export default function Hero() {
             </AnimatePresence>
           </div>
 
-          {/* CENTER CONTENT: Spacious & Ergonomic UX */}
+          {/* CENTER CONTENT: Primary Focus on Mobile Top & Desktop Center */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="lg:col-span-6 w-full z-30 flex flex-col items-center text-center px-2 sm:px-6 py-2"
           >
-            {/* Centered Eyebrow */}
-            <div className="flex justify-center mb-3 sm:mb-3.5">
-              <Eyebrow>Intelligent Modular Kitchens • Indore & MP</Eyebrow>
+            {/* Centered Eyebrow (Slightly Smaller Text Size) */}
+            <div className="flex justify-center mb-2.5 sm:mb-3">
+              <Eyebrow className="text-[10px] sm:text-xs py-0.5 px-2.5 tracking-wide">
+                Intelligent Modular Kitchens
+              </Eyebrow>
             </div>
 
-            {/* Prominent Middle Heading in Blue with spacious line height */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] font-black text-[var(--color-naman-indigo)] leading-[1.08] tracking-tight mb-3 sm:mb-4">
+            {/* Prominent Middle Heading in Blue */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] font-black text-[var(--color-naman-indigo)] leading-[1.08] tracking-tight mb-3 sm:mb-4 font-display">
               Kitchens Made for Life.
             </h1>
 
-            {/* Subtitle with comfortable reading space */}
-            <p className="text-sm sm:text-base text-[var(--color-espresso-mid)] max-w-xl mx-auto leading-relaxed mb-4 sm:mb-5 font-normal">
-              Founded in 2017 by Shri Akashdeep Gupta, Naman Kitchen crafts ergonomic modular kitchens engineered for Indian cooking. 100% site accuracy & precision Blum/Hettich hardware.
+            {/* Subtitle */}
+            <p className="text-xs sm:text-sm md:text-base text-[var(--color-espresso-mid)] max-w-md sm:max-w-lg mx-auto leading-relaxed mb-4 sm:mb-5 font-normal">
+              Ergonomic modular kitchens engineered for Indian cooking with 100% site measurement accuracy and precision hardware.
             </p>
 
-            {/* Redesigned Cabinet-Handle CTA Buttons */}
+            {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-3.5 mb-4 sm:mb-5">
               <Button to="/contact" variant="primary" size="md" icon={ArrowRight}>
                 Book a Free Consultation
@@ -241,7 +246,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* RIGHT ROTATING IMAGE (Flush closer to right end, larger) */}
+          {/* RIGHT ROTATING IMAGE (Desktop Only) */}
           <div className="hidden lg:flex lg:col-span-3 justify-end z-20">
             <AnimatePresence mode="wait">
               <motion.div
@@ -268,9 +273,9 @@ export default function Hero() {
         </div>
 
         {/* ========================================================
-            BOTTOM LEVEL: BOTTOM ROTATING IMAGE (Anchored closer to bottom end)
+            BOTTOM LEVEL: BOTTOM ROTATING IMAGE (Desktop Only)
             ======================================================== */}
-        <div className="w-full flex justify-center z-20 pb-1">
+        <div className="hidden lg:flex w-full justify-center z-20 pb-1">
           <AnimatePresence mode="wait">
             <motion.div
               key={`bottom-${bottomItem.id}`}
@@ -280,7 +285,7 @@ export default function Hero() {
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="hero-panel-card group relative flex flex-col items-center max-w-[320px] sm:max-w-[480px] lg:max-w-[560px]"
             >
-              {/* Component Image (Larger) */}
+              {/* Component Image */}
               <img
                 src={bottomItem.src}
                 alt={bottomItem.name}
@@ -295,31 +300,37 @@ export default function Hero() {
           </AnimatePresence>
         </div>
 
-        {/* Mobile/Tablet Side Strip */}
-        <div className="flex lg:hidden items-center justify-center gap-3 mt-1 pb-1 w-full max-w-sm mx-auto">
-          <div className="flex-1 bg-white/50 backdrop-blur-xs p-1.5 rounded-xl border border-stone-200/70 text-center shadow-xs">
-            <img
-              src={leftItem.src}
-              alt={leftItem.name}
-              className="w-full h-12 object-contain mb-0.5 drop-shadow-xs"
-            />
-            <span className="text-[9px] font-bold text-[var(--color-espresso)] block truncate">
-              {leftItem.name}
-            </span>
-          </div>
-          <div className="flex-1 bg-white/50 backdrop-blur-xs p-1.5 rounded-xl border border-stone-200/70 text-center shadow-xs">
-            <img
-              src={rightItem.src}
-              alt={rightItem.name}
-              className="w-full h-12 object-contain mb-0.5 drop-shadow-xs"
-            />
-            <span className="text-[9px] font-bold text-[var(--color-espresso)] block truncate">
-              {rightItem.name}
-            </span>
-          </div>
-        </div>
 
       </div>
+
+      {/* ========================================================
+          MOBILE-ONLY SHOWCASE MARQUEE (< lg)
+          Pinned to bottom of hero viewport on mobile
+          ======================================================== */}
+      <div className="flex lg:hidden w-full relative overflow-hidden py-3 mt-auto z-10">
+        <div className="animate-marquee-chain flex items-center gap-3">
+          {[...KITCHEN_COMPONENTS, ...KITCHEN_COMPONENTS, ...KITCHEN_COMPONENTS].map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="w-[160px] sm:w-[190px] shrink-0 p-2.5 rounded-2xl bg-white/75 backdrop-blur-md border border-white/90 shadow-sm flex flex-col items-center text-center"
+              >
+                <img
+                  src={item.src}
+                  alt={item.name}
+                  className="w-full h-20 sm:h-24 object-contain mb-1.5 filter drop-shadow-sm"
+                />
+                <div className="flex items-center gap-1.5 text-[10px] font-bold text-[var(--color-espresso)] truncate max-w-full">
+                  <Icon className="w-3 h-3 text-[var(--color-naman-indigo)] shrink-0" />
+                  <span className="truncate">{item.name}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
     </section>
   );
 }
