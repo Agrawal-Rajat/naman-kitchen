@@ -7,7 +7,7 @@ import FeaturedProjects from './FeaturedProjects';
 import HardwareStorage from './HardwareStorage';
 import WhyNamanKitchen from './WhyNamanKitchen';
 import ProcessTimeline from './ProcessTimeline';
-import MaterialsSection from './MaterialsSection';
+
 import TestimonialsSection from './TestimonialsSection';
 import ConsultationCta from './ConsultationCta';
 
@@ -25,7 +25,7 @@ export default function Home() {
       <HardwareStorage />
       <WhyNamanKitchen />
       <ProcessTimeline />
-      <MaterialsSection />
+
       <TestimonialsSection />
       <ConsultationCta />
     </>
