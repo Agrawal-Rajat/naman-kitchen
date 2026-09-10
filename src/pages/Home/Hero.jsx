@@ -69,64 +69,6 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--color-brass)]/8 rounded-full blur-3xl pointer-events-none z-[1]" />
       <div className="absolute bottom-6 right-8 w-72 h-72 bg-[var(--color-naman-red)]/8 rounded-full blur-3xl pointer-events-none z-[1]" />
 
-      {/* ========================================================
-          SCREEN-END HORIZONTAL CHIMNEY HOOD WINGS (Light Refined Shade)
-          ======================================================== */}
-      {/* Left Chimney Container (Flush to left screen edge) */}
-      <motion.div
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="hidden md:block absolute left-0 top-2 lg:top-4 z-30 pointer-events-auto"
-      >
-        <div className="chimney-wing-left py-2 px-4 sm:px-6 flex items-center gap-2.5 shadow-sm">
-          <div className="w-2 h-2 rounded-full bg-[var(--color-naman-red)] shrink-0 animate-pulse shadow-[0_0_6px_var(--color-naman-red)]" />
-          <div className="flex flex-col">
-            <span className="text-xs sm:text-sm lg:text-base font-black text-[var(--color-espresso)] tracking-wider uppercase">
-              Smart Designs
-            </span>
-            <span className="text-[10px] text-stone-500 font-semibold tracking-wide">
-              Ergonomic & Spatial Layouts
-            </span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right Chimney Container (Flush to right screen edge) */}
-      <motion.div
-        initial={{ opacity: 0, x: 80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-        className="hidden md:block absolute right-0 top-2 lg:top-4 z-30 pointer-events-auto"
-      >
-        <div className="chimney-wing-right py-2 px-4 sm:px-6 flex items-center justify-end gap-2.5 shadow-sm text-right">
-          <div className="flex flex-col">
-            <span className="text-xs sm:text-sm lg:text-base font-black text-[var(--color-espresso)] tracking-wider uppercase">
-              Quality Craftsmanship
-            </span>
-            <span className="text-[10px] text-stone-500 font-semibold tracking-wide">
-              German Hardware & Precision Fit
-            </span>
-          </div>
-          <div className="w-2 h-2 rounded-full bg-[var(--color-brass)] shrink-0 animate-pulse shadow-[0_0_6px_var(--color-brass)]" />
-        </div>
-      </motion.div>
-
-      {/* Mobile-Only Chimney Wings Row (< md) */}
-      <div className="flex md:hidden w-full items-center justify-between px-2 pt-0 z-30 gap-1.5">
-        <div className="chimney-wing-left py-1.5 px-3 flex items-center gap-1.5 flex-1">
-          <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-naman-red)] shrink-0" />
-          <span className="text-[11px] font-black text-[var(--color-espresso)] tracking-wide uppercase">
-            Smart Designs
-          </span>
-        </div>
-        <div className="chimney-wing-right py-1.5 px-3 flex items-center justify-end gap-1.5 flex-1 text-right">
-          <span className="text-[11px] font-black text-[var(--color-espresso)] tracking-wide uppercase">
-            Craftsmanship
-          </span>
-          <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-brass)] shrink-0" />
-        </div>
-      </div>
 
       {/* ========================================================
           MAIN FULL-WIDTH COMPOSITION CONTAINER

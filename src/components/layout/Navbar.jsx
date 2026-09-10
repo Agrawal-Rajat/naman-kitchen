@@ -39,8 +39,10 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Naman Kitchen Studio Logo"
-              style={{ maxHeight: '38px', width: 'auto' }}
-              className="h-7 sm:h-8 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
+              style={{ maxHeight: isScrolled ? '62px' : '86px', width: 'auto' }}
+              className={`${
+                isScrolled ? 'h-14 sm:h-14 md:h-15' : 'h-[74px] sm:h-20 md:h-20 lg:h-[84px]'
+              } w-auto object-contain transition-all duration-300 group-hover:scale-102`}
             />
           </Link>
         </div>

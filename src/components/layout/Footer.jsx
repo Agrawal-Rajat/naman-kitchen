@@ -29,12 +29,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-white/10">
           {/* Col 1 & 2: Brand & Identity */}
           <div className="lg:col-span-2 space-y-6">
-            <Link to="/" className="inline-block p-2 bg-white rounded-xl">
+            <Link to="/" className="inline-block p-2.5 sm:p-3 bg-white rounded-xl shadow-xs transition-transform duration-300 hover:scale-102">
               <img
                 src="/logo.png"
                 alt="Naman Kitchen Studio"
-                style={{ maxHeight: '50px', width: 'auto' }}
-                className="h-12 md:h-14 w-auto object-contain"
+                style={{ maxHeight: '80px', width: 'auto' }}
+                className="h-16 sm:h-18 md:h-20 w-auto object-contain"
               />
             </Link>
 

@@ -54,8 +54,8 @@ export default function MobileNav({ isOpen, onClose }) {
                   <img
                     src="/logo.png"
                     alt="Naman Kitchen Studio"
-                    style={{ maxHeight: '36px', width: 'auto' }}
-                    className="h-8 w-auto object-contain"
+                    style={{ maxHeight: '60px', width: 'auto' }}
+                    className="h-14 sm:h-16 w-auto object-contain"
                   />
                 </div>
                 <button
