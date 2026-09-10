@@ -57,12 +57,6 @@ export default function ProcessTimeline() {
                         {step.description}
                       </p>
                     </div>
-
-                    {/* Bottom Lamp Rim / Brass Fitting Edge */}
-                    <div className="mt-4 pt-3 border-t border-[var(--color-brass)]/25 flex items-center justify-between text-[11px] font-semibold text-[var(--color-naman-indigo)] relative z-10">
-                      <span>Phase {step.step} Active</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brass)] shadow-[0_0_5px_var(--color-brass)] animate-pulse" />
-                    </div>
                   </div>
                 </div>
               </Reveal>

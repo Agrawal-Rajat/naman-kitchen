@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { WhatsAppIcon } from '../../components/common/Icons';
 import Button from '../../components/common/Button';
 import Reveal from '../../components/motion/Reveal';
 import ctaBg from '../../assets/cta.png';
@@ -43,7 +44,7 @@ export default function KitchenConsultationCta() {
               variant="outline"
               size="lg"
               className="text-white border-white/30 hover:border-white hover:text-white"
-              icon={MessageCircle}
+              icon={WhatsAppIcon}
             >
               WhatsApp Floor Plan
             </Button>

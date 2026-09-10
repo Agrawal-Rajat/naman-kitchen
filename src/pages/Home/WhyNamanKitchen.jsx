@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Users, Shield, BadgePercent, CheckCircle2 } from 'lucide-react';
+import { Target, Users, Shield, BadgePercent } from 'lucide-react';
 import SectionHeading from '../../components/common/SectionHeading';
 import Reveal from '../../components/motion/Reveal';
 
@@ -112,9 +112,6 @@ export default function WhyNamanKitchen() {
                           <div className="w-12 h-12 rounded-xl bg-[var(--color-ivory-light)] text-[var(--color-naman-indigo)] flex items-center justify-center border border-[#E0D8C8] group-hover:scale-105 transition-transform duration-300">
                             <Icon className="w-6 h-6 text-[var(--color-naman-indigo)]" />
                           </div>
-                          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
-                            {pillar.badge}
-                          </span>
                         </div>
 
                         <h3 className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] font-display leading-snug mb-3 group-hover:text-[var(--color-naman-indigo)] transition-colors">
@@ -124,11 +121,6 @@ export default function WhyNamanKitchen() {
                         <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
                           {pillar.description}
                         </p>
-                      </div>
-
-                      <div className="relative z-10 mt-6 pt-4 border-t border-[#EAE5D9] flex items-center gap-2 text-xs font-semibold text-[var(--color-naman-indigo)]">
-                        <CheckCircle2 className="w-4 h-4 text-[var(--color-naman-red)]" />
-                        <span>Verified Company Standard</span>
                       </div>
                     </div>
                   </div>

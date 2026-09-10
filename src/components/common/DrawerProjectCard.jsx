@@ -1,42 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function DrawerProjectCard({
   project,
   onSelectProject,
-  autoOpenDelay = 0.2,
   priority = false,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, amount: 0.25 });
 
   const images = project.images && project.images.length > 0 
     ? project.images 
     : [project.image];
 
-  // Auto-open drawer smoothly once card is in viewport
+  // Auto-advance image carousel every 4 seconds
   useEffect(() => {
-    if (isInView) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, autoOpenDelay * 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, autoOpenDelay]);
-
-  // Auto-advance image carousel every 4 seconds once drawer is open
-  useEffect(() => {
-    if (!isOpen || images.length <= 1) return;
+    if (images.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isOpen, images.length]);
+  }, [images.length]);
 
   const handlePrevImage = (e) => {
     e.stopPropagation();
@@ -49,39 +35,23 @@ export default function DrawerProjectCard({
   };
 
   return (
-    <div ref={cardRef} className="drawer-card-box group flex flex-col h-full bg-white shadow-card">
+    <div className="drawer-card-box group flex flex-col h-full bg-white shadow-card">
       {/* ========================================================
-          DRAWER HANDLE & TOP PANEL
+          DRAWER HANDLE & TOP PANEL (Always Decorative Cabinet Trim)
           ======================================================== */}
-      <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="drawer-face-panel flex flex-col items-center justify-between gap-2.5 transition-colors hover:bg-[#F4EFE6]"
-        title={isOpen ? 'Click to close drawer' : 'Click to open drawer'}
-      >
+      <div className="drawer-face-panel flex flex-col items-center justify-between gap-2.5">
         {/* Realistic Polished Brass Cabinet Handle */}
-        <div className="drawer-handle-bar transition-transform duration-300 group-hover:scale-105">
+        <div className="drawer-handle-bar">
           <div className="drawer-handle-dot" />
           <div className="h-0.5 w-10 bg-white/40 rounded-full" />
           <div className="drawer-handle-dot" />
         </div>
-
-        </div>
+      </div>
 
       {/* ========================================================
-          DRAWER INTERIOR: SMOOTH REVEAL + IMAGE CAROUSEL
+          DRAWER INTERIOR: ALWAYS OPEN
           ======================================================== */}
-      <motion.div
-        initial={false}
-        animate={{
-          height: isOpen ? 'auto' : 0,
-          opacity: isOpen ? 1 : 0,
-        }}
-        transition={{
-          height: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
-          opacity: { duration: 0.45, ease: 'easeOut' },
-        }}
-        className="overflow-hidden flex flex-col flex-1"
-      >
+      <div className="flex flex-col flex-1">
         {/* Recessed Drawer Compartment with Shadow Edge */}
         <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-gradient-to-b from-[var(--color-ivory-light)] to-white">
           
@@ -174,7 +144,7 @@ export default function DrawerProjectCard({
           </div>
 
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

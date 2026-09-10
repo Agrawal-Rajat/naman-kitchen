@@ -1,278 +1,144 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Sparkles, Clock, CheckCircle, Compass, Layers, Wrench, Sparkle } from 'lucide-react';
+import React from 'react';
+import { motion } from 'motion/react';
+import { ArrowRight, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Eyebrow from '../../components/common/Eyebrow';
 import floorBg from '../../assets/floor.png';
+import heroImage from '../../assets/kitchen-hero-image.png';
 
-const KITCHEN_COMPONENTS = [
-  {
-    id: 'chimney',
-    name: 'Overhead Chimney & Cabinets',
-    src: '/images/hero/hero-chimney.png',
-    icon: Layers,
-    accent: 'var(--color-naman-indigo)',
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
   },
-  {
-    id: 'pantry',
-    name: 'Smart Larder Unit',
-    src: '/images/hero/hero-pantry.png',
-    icon: Compass,
-    accent: 'var(--color-naman-indigo)',
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
   },
-  {
-    id: 'countertop',
-    name: 'Quartz Countertop & Undermount Sink',
-    src: '/images/hero/hero-countertop.png',
-    icon: Sparkle,
-    accent: 'var(--color-naman-red)',
-  },
-  {
-    id: 'drawer',
-    name: 'Soft-Close Carousel',
-    src: '/images/hero/hero-drawer.png',
-    icon: Wrench,
-    accent: 'var(--color-brass)',
-  },
-];
+};
 
 export default function Hero() {
-  const [rotationStep, setRotationStep] = useState(0);
-
-  // Clockwise shift: moves smoothly to the adjacent position, rests for 2.5s, then moves again
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotationStep((prev) => (prev + 1) % 4);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Compute items at each position based on current clockwise rotation step
-  const topItem = KITCHEN_COMPONENTS[(0 - rotationStep + 4) % 4];
-  const rightItem = KITCHEN_COMPONENTS[(1 - rotationStep + 4) % 4];
-  const bottomItem = KITCHEN_COMPONENTS[(2 - rotationStep + 4) % 4];
-  const leftItem = KITCHEN_COMPONENTS[(3 - rotationStep + 4) % 4];
-
   return (
-    <section className="relative overflow-hidden min-h-[calc(100svh-3.75rem)] lg:min-h-[calc(100svh-4rem)] flex flex-col justify-start lg:justify-center items-center py-1 sm:py-5 bg-gradient-to-b from-[#E7ECE3] via-[#DCE4D7] to-[#E7ECE3]">
-      {/* Full-Cover Background Floor Texture with low opacity */}
+    <section className="relative overflow-hidden min-h-[calc(100svh-4rem)] flex items-center py-16 lg:py-24 bg-[#FAF8F5]">
+      {/* 1. Floor Texture Layer */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none opacity-15 mix-blend-multiply z-0"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none opacity-10 mix-blend-multiply z-0"
         style={{ backgroundImage: `url(${floorBg})` }}
         aria-hidden="true"
       />
 
-      {/* 1. Soft Ambient Radial Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_50%,rgba(255,255,255,0.7)_0%,rgba(231,236,227,0.3)_65%,rgba(214,224,208,0.6)_100%)] pointer-events-none z-[1]" />
+      {/* 2. Hero Background Image with Smooth Right-to-Left Gradient Fade */}
+      <div className="absolute inset-0 z-1 pointer-events-none overflow-hidden">
+        {/* Kitchen Hero Image with subtle scale & opacity reveal */}
+        <motion.img
+          initial={{ scale: 1.05, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          src={heroImage}
+          alt="Naman Kitchen Studio Modular Kitchen Showcase"
+          className="absolute right-0 top-0 w-full lg:w-[68%] h-full object-cover object-right lg:object-center"
+        />
 
-      {/* Decorative Brand Accent Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[var(--color-brass)]/8 rounded-full blur-3xl pointer-events-none z-[1]" />
-      <div className="absolute bottom-6 right-8 w-72 h-72 bg-[var(--color-naman-red)]/8 rounded-full blur-3xl pointer-events-none z-[1]" />
+        {/* Primary Gradient Overlay: Solid Ivory on Left -> Smooth Transparent on Right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/95 via-45% sm:via-50% lg:via-52% to-transparent" />
 
-
-      {/* ========================================================
-          MAIN FULL-WIDTH COMPOSITION CONTAINER
-          ======================================================== */}
-      {/* ========================================================
-          MAIN FULL-WIDTH COMPOSITION CONTAINER
-          ======================================================== */}
-      <div className="w-full max-w-[98rem] mx-auto my-auto lg:my-0 relative z-10 px-2 sm:px-4 lg:px-6 flex flex-col items-center gap-1 sm:gap-2">
-        
-        {/* ========================================================
-            TOP LEVEL: TOP ROTATING IMAGE (Desktop Only)
-            ======================================================== */}
-        <div className="hidden lg:flex w-full justify-center z-20 pt-1">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`top-${topItem.id}`}
-              initial={{ opacity: 0, y: -25, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 30, scale: 0.95 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              className="hero-panel-card group relative flex flex-col items-center max-w-[300px] sm:max-w-[460px] lg:max-w-[540px]"
-            >
-              {/* Clean Component Badge */}
-              <div className="hero-item-badge mb-1 shadow-xs">
-                <topItem.icon className="w-3 h-3 text-[var(--color-naman-indigo)]" />
-                <span>{topItem.name}</span>
-              </div>
-              {/* Top Component Image */}
-              <img
-                src={topItem.src}
-                alt={topItem.name}
-                className="w-full h-auto max-h-20 sm:max-h-28 lg:max-h-32 xl:max-h-36 object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] transition-transform duration-500 group-hover:scale-105"
-                loading="eager"
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* ========================================================
-            MIDDLE ROW:
-            Left Image (Desktop) | Center Content (Mobile Top / Desktop Center) | Right Image (Desktop)
-            ======================================================== */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4 items-center py-2">
-          
-          {/* LEFT ROTATING IMAGE (Desktop Only) */}
-          <div className="hidden lg:flex lg:col-span-3 justify-start z-20">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`left-${leftItem.id}`}
-                initial={{ opacity: 0, x: -30, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -25, scale: 0.95 }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="hero-panel-card group relative flex flex-col items-start max-w-[220px] xl:max-w-[270px]"
-              >
-                <div className="hero-item-badge mb-1.5 shadow-xs">
-                  <leftItem.icon className="w-3 h-3 text-[var(--color-brass)]" />
-                  <span>{leftItem.name}</span>
-                </div>
-                <img
-                  src={leftItem.src}
-                  alt={leftItem.name}
-                  className="w-full h-auto max-h-38 sm:max-h-48 xl:max-h-56 object-contain filter drop-shadow-[0_14px_26px_rgba(0,0,0,0.14)] transition-transform duration-500 group-hover:scale-105"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* CENTER CONTENT: Primary Focus on Mobile Top & Desktop Center */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="lg:col-span-6 w-full z-30 flex flex-col items-center text-center px-2 sm:px-6 py-2"
-          >
-            {/* Centered Eyebrow (Slightly Smaller Text Size) */}
-            <div className="flex justify-center mb-2.5 sm:mb-3">
-              <Eyebrow className="text-[10px] sm:text-xs py-0.5 px-2.5 tracking-wide">
-                Intelligent Modular Kitchens
-              </Eyebrow>
-            </div>
-
-            {/* Prominent Middle Heading in Blue */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] font-black text-[var(--color-naman-indigo)] leading-[1.08] tracking-tight mb-3 sm:mb-4 font-display">
-              Kitchens Made for Life.
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-xs sm:text-sm md:text-base text-[var(--color-espresso-mid)] max-w-md sm:max-w-lg mx-auto leading-relaxed mb-4 sm:mb-5 font-normal">
-              Ergonomic modular kitchens engineered for Indian cooking with 100% site measurement accuracy and precision hardware.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3.5 mb-4 sm:mb-5">
-              <Button to="/contact" variant="primary" size="md" icon={ArrowRight}>
-                Book a Free Consultation
-              </Button>
-              <Button to="/kitchens" variant="outline" size="md">
-                Explore Kitchen Layouts
-              </Button>
-            </div>
-
-            {/* Credibility Trust Highlights */}
-            <div className="pt-3 border-t border-stone-300/60 w-full max-w-lg grid grid-cols-3 gap-2 text-[11px] sm:text-xs text-[var(--color-espresso-mid)] font-semibold">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center sm:text-left">
-                <CheckCircle className="w-4 h-4 text-[var(--color-naman-indigo)] shrink-0" />
-                <span>100% Site Accuracy</span>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center sm:text-left border-x border-stone-300/60 px-1">
-                <Clock className="w-4 h-4 text-[var(--color-naman-red)] shrink-0" />
-                <span>8–10 Yr Artisans</span>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 text-center sm:text-left">
-                <Sparkles className="w-4 h-4 text-[var(--color-brass)] shrink-0" />
-                <span>Since 2017</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT ROTATING IMAGE (Desktop Only) */}
-          <div className="hidden lg:flex lg:col-span-3 justify-end z-20">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`right-${rightItem.id}`}
-                initial={{ opacity: 0, x: 30, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 25, scale: 0.95 }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                className="hero-panel-card group relative flex flex-col items-end max-w-[220px] xl:max-w-[270px]"
-              >
-                <div className="hero-item-badge mb-1.5 shadow-xs">
-                  <rightItem.icon className="w-3 h-3 text-[var(--color-naman-indigo)]" />
-                  <span>{rightItem.name}</span>
-                </div>
-                <img
-                  src={rightItem.src}
-                  alt={rightItem.name}
-                  className="w-full h-auto max-h-38 sm:max-h-48 xl:max-h-56 object-contain filter drop-shadow-[0_14px_26px_rgba(0,0,0,0.14)] transition-transform duration-500 group-hover:scale-105"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-        </div>
-
-        {/* ========================================================
-            BOTTOM LEVEL: BOTTOM ROTATING IMAGE (Desktop Only)
-            ======================================================== */}
-        <div className="hidden lg:flex w-full justify-center z-20 pb-1">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`bottom-${bottomItem.id}`}
-              initial={{ opacity: 0, y: 25, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -30, scale: 0.95 }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              className="hero-panel-card group relative flex flex-col items-center max-w-[320px] sm:max-w-[480px] lg:max-w-[560px]"
-            >
-              {/* Component Image */}
-              <img
-                src={bottomItem.src}
-                alt={bottomItem.name}
-                className="w-full h-auto max-h-20 sm:max-h-28 lg:max-h-34 xl:max-h-38 object-contain filter drop-shadow-[0_14px_28px_rgba(0,0,0,0.15)] transition-transform duration-500 group-hover:scale-105"
-              />
-              {/* Clean Component Badge */}
-              <div className="hero-item-badge mt-1 shadow-xs">
-                <bottomItem.icon className="w-3 h-3 text-[var(--color-naman-red)]" />
-                <span>{bottomItem.name}</span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-
+        {/* Secondary Vertical Gradient for Top Nav and Bottom Edge Smoothness */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/60 via-transparent to-[#FAF8F5]/85" />
       </div>
 
-      {/* ========================================================
-          MOBILE-ONLY SHOWCASE MARQUEE (< lg)
-          Pinned to bottom of hero viewport on mobile
-          ======================================================== */}
-      <div className="flex lg:hidden w-full relative overflow-hidden py-3 mt-auto z-10">
-        <div className="animate-marquee-chain flex items-center gap-3">
-          {[...KITCHEN_COMPONENTS, ...KITCHEN_COMPONENTS, ...KITCHEN_COMPONENTS].map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={idx}
-                className="w-[160px] sm:w-[190px] shrink-0 p-2.5 rounded-2xl bg-white/75 backdrop-blur-md border border-white/90 shadow-sm flex flex-col items-center text-center"
-              >
-                <img
-                  src={item.src}
-                  alt={item.name}
-                  className="w-full h-20 sm:h-24 object-contain mb-1.5 filter drop-shadow-sm"
-                />
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-[var(--color-espresso)] truncate max-w-full">
-                  <Icon className="w-3 h-3 text-[var(--color-naman-indigo)] shrink-0" />
-                  <span className="truncate">{item.name}</span>
-                </div>
+      {/* Ambient Lighting Glows */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[var(--color-naman-indigo)]/5 rounded-full blur-3xl pointer-events-none z-2" />
+      <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-[var(--color-brass)]/10 rounded-full blur-3xl pointer-events-none z-2" />
+
+      {/* 3. Foreground Content */}
+      <div className="container-site relative z-10 w-full">
+        <div className="max-w-xl sm:max-w-2xl lg:max-w-3xl text-left">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-start space-y-7 sm:space-y-8 lg:space-y-9"
+          >
+            {/* Eyebrow Badge */}
+            <motion.div variants={itemVariants}>
+              <Eyebrow className="text-xs sm:text-sm py-1.5 px-4 bg-white/90 backdrop-blur-md border border-stone-200/90 shadow-xs">
+                Crafted in Indore & Madhya Pradesh
+              </Eyebrow>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1 
+              variants={itemVariants} 
+              className="text-3xl sm:text-5xl lg:text-[3.75rem] font-extrabold text-[var(--color-espresso)] leading-[1.14] tracking-tight font-display"
+            >
+              Modular Kitchens Made for{' '}
+              <span className="relative inline-block text-[var(--color-naman-indigo)] mt-1 sm:mt-0">
+                Real Indian Homes.
+                <svg
+                  className="absolute -bottom-2 inset-x-0 w-full h-3.5 text-[var(--color-naman-red)]/35 pointer-events-none"
+                  viewBox="0 0 200 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 9C50 3 150 3 197 9"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p 
+              variants={itemVariants}
+              className="text-base sm:text-lg md:text-xl text-[var(--color-espresso-mid)] max-w-2xl leading-relaxed font-normal"
+            >
+              Engineered with 100% site measurement accuracy, heavy-duty soft-close hardware, and moisture-proof HDMR cores. Built to withstand continuous Indian cooking while looking flawlessly modern.
+            </motion.p>
+
+            {/* Primary & Secondary Call to Actions */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-2">
+              <Button to="/contact" variant="primary" size="lg" icon={ArrowRight} className="shadow-xl shadow-[var(--color-naman-indigo)]/20 px-8 py-4 text-base">
+                Book Free Consultation
+              </Button>
+              <Button to="/kitchens" variant="outline" size="lg" className="bg-white/80 backdrop-blur-md border-stone-300 hover:bg-white px-7 py-4 text-base">
+                Explore Layouts
+              </Button>
+            </motion.div>
+
+            {/* Trust Highlights Row */}
+            <motion.div variants={itemVariants} className="pt-8 border-t border-stone-300/80 w-full max-w-2xl grid grid-cols-3 gap-3 sm:gap-6 text-xs sm:text-sm text-[var(--color-espresso)] font-semibold">
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/40 backdrop-blur-xs border border-white/60">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-naman-indigo)] shrink-0" />
+                <span>100% Site Accuracy</span>
               </div>
-            );
-          })}
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/40 backdrop-blur-xs border border-white/60">
+                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-naman-red)] shrink-0" />
+                <span>8–10 Yr Artisans</span>
+              </div>
+              <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/40 backdrop-blur-xs border border-white/60">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-brass)] shrink-0" />
+                <span>Since 2017</span>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
     </section>
   );
 }
+
+
+

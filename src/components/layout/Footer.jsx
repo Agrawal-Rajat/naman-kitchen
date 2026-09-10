@@ -44,17 +44,6 @@ export default function Footer() {
               and precision hardware across Indore and Madhya Pradesh.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs tracking-wider text-white/60">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                <HeartHandshake className="w-3.5 h-3.5 text-[var(--color-naman-red)]" />
-                Life Long Partner
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                <ShieldCheck className="w-3.5 h-3.5 text-[var(--color-brass)]" />
-                100% Accuracy Standard
-              </span>
-            </div>
-
             <div className="pt-2">
               <Button to="/contact" variant="accent" size="sm" icon={ArrowUpRight}>
                 Book Consultation

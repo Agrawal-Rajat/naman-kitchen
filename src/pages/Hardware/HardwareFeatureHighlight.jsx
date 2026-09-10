@@ -1,9 +1,9 @@
 import React from 'react';
-import { ShieldCheck, Weight, Flame, Sparkles, Activity, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Weight, Flame, Sparkles } from 'lucide-react';
 import Reveal from '../../components/motion/Reveal';
 
 import bgImg1 from '../../assets/work/project-kitchen-blue-02.jpeg';
-import bgImg2 from '../../assets/work/project-kitchen-charcoal-02.jpeg';
+import bgImg2 from '../../assets/work/project-kitchen-charcoal-01.jpeg';
 import bgImg3 from '../../assets/work/project-kitchen-rustic-02.jpeg';
 import bgImg4 from '../../assets/work/project-kitchen-warm-wood-02.jpeg';
 
@@ -15,30 +15,26 @@ export default function HardwareFeatureHighlight() {
       icon: Weight,
       title: 'High Load Capacity (45kg+)',
       desc: 'Engineered specifically for heavy brass, cast iron, and large stainless steel Indian cookware without sagging.',
-      techBadge: 'Full-Load Deflection < 1mm',
     },
     {
       icon: ShieldCheck,
       title: '100,000+ Cycle Reliability',
       desc: 'Precision hydraulic dampeners tested for over 25 years of daily smooth, silent, and whisper-quiet closure.',
-      techBadge: 'DIN EN 15338 Verified',
     },
     {
       icon: Flame,
       title: 'Moisture & Oil Resilient',
       desc: 'Anti-corrosive multi-layer nickel-chrome electroplating resistant to turmeric, high steam, and Indian kitchen vapours.',
-      techBadge: 'ISO 9227 Grade 5',
     },
     {
       icon: Sparkles,
       title: 'Ergonomic Full Extension',
       desc: '100% telescopic slide channels providing completely unobstructed access all the way to the deepest rear of each drawer.',
-      techBadge: 'Zero Blind-Corner Reach',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#EFF4EC] text-[var(--color-espresso)] relative overflow-hidden border-t border-black/5">
+    <section className="py-10 md:py-14 bg-[#EFF4EC] text-[var(--color-espresso)] relative overflow-hidden border-t border-black/5">
       {/* Less Opaque Gridlines forming Squares */}
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -53,13 +49,6 @@ export default function HardwareFeatureHighlight() {
 
       <div className="container-site relative z-10">
         <div className="max-w-3xl mb-14">
-          <Reveal direction="up" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DFE8DB] border border-[#C2D2BD] text-[#334230] text-xs uppercase font-bold tracking-widest mb-3 shadow-2xs">
-              <Activity className="w-3.5 h-3.5 animate-pulse text-[var(--color-naman-red)]" />
-              <span>Built For Indian Cooking & Heavy Utensils</span>
-            </div>
-          </Reveal>
-          
           <Reveal direction="up" delay={0.2}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#182017] tracking-tight leading-tight font-display">
               Why Hardware Quality Dictates Your Kitchen’s Lifetime
@@ -114,15 +103,6 @@ export default function HardwareFeatureHighlight() {
                     <p className="text-xs sm:text-sm text-[#404D3F] leading-relaxed font-normal">
                       {spec.desc}
                     </p>
-                  </div>
-
-                  {/* Bottom Technical Benchmark Plate */}
-                  <div className="pt-4 mt-6 border-t border-[#E2EADF] flex items-center justify-between text-xs relative z-10">
-                    <span className="text-[11px] text-[#2C382A] font-semibold flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-naman-red)]" />
-                      {spec.techBadge}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#859581] shadow-[0_0_6px_#859581] animate-pulse" />
                   </div>
                 </div>
               </Reveal>

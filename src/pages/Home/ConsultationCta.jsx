@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, MessageCircle, Calendar } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { WhatsAppIcon } from '../../components/common/Icons';
 import Button from '../../components/common/Button';
 import Reveal from '../../components/motion/Reveal';
 import ctaBg from '../../assets/cta.png';
@@ -16,12 +17,6 @@ export default function ConsultationCta() {
 
       <div className="container-site relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <Reveal direction="up" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-white/90 text-xs font-semibold uppercase tracking-wider border border-white/15">
-              <Calendar className="w-3.5 h-3.5 text-[var(--color-brass)]" />
-              <span>Start Your Modular Kitchen Journey</span>
-            </div>
-          </Reveal>
 
           <Reveal direction="up" delay={0.2}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
@@ -46,18 +41,10 @@ export default function ConsultationCta() {
                 variant="outline"
                 size="lg"
                 className="text-white border-white/30 hover:border-white hover:text-white"
-                icon={MessageCircle}
+                icon={WhatsAppIcon}
               >
                 Chat on WhatsApp
               </Button>
-            </div>
-          </Reveal>
-
-          <Reveal direction="up" delay={0.5}>
-            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 text-xs text-white/60">
-              <span>✓ Free Floor Plan Review</span>
-              <span>✓ Transparent Material Breakdown</span>
-              <span>✓ Direct Guidance by Founder</span>
             </div>
           </Reveal>
         </div>

@@ -18,12 +18,6 @@ export default function ImageFrame({
 
   return (
     <figure className={`relative group overflow-hidden rounded-2xl bg-[var(--color-ivory-dark)] border border-black/5 shadow-subtle ${aspectRatio} ${className}`}>
-      {/* Badge tag if provided */}
-      {badge && (
-        <span className="absolute top-3 left-3 z-20 px-2.5 py-1 text-xs font-semibold rounded-full bg-white/90 backdrop-blur-md text-[var(--color-espresso)] shadow-sm">
-          {badge}
-        </span>
-      )}
 
       {/* Actual Image or Fallback */}
       {!hasError && src ? (

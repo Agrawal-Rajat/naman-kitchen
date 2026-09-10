@@ -42,9 +42,6 @@ export default function ProjectDetailModal({ project, onClose }) {
             alt={`${project.title} view ${selectedImgIndex + 1}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-bold text-[var(--color-espresso)] uppercase tracking-wider">
-            {project.layout}
-          </div>
         </div>
 
         {/* Thumbnail Selector Strip if multiple images */}

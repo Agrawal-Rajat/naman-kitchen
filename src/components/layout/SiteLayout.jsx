@@ -3,7 +3,8 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTop from '../../hooks/useScrollToTop';
-import { MessageCircle, PhoneCall } from 'lucide-react';
+import { PhoneCall } from 'lucide-react';
+import { WhatsAppIcon } from '../common/Icons';
 
 export default function SiteLayout() {
   return (
@@ -43,7 +44,7 @@ export default function SiteLayout() {
           title="Chat on WhatsApp"
           aria-label="Chat on WhatsApp"
         >
-          <MessageCircle className="w-6 h-6 fill-current" />
+          <WhatsAppIcon className="w-6 h-6 text-white" />
         </a>
       </aside>
     </div>

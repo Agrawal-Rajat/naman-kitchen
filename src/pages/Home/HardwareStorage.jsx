@@ -87,9 +87,6 @@ export default function HardwareStorage() {
                         <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[var(--color-naman-indigo)] to-[var(--color-naman-indigo-light)] flex items-center justify-center text-white shadow-sm group-hover/partition:scale-105 transition-transform duration-300">
                           <Icon className="w-5 h-5 text-[#FFEBB0]" />
                         </div>
-                        <span className="text-[11px] uppercase font-semibold tracking-wider px-3 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
-                          {item.tag}
-                        </span>
                       </div>
 
                       <h3 className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] mb-2.5 font-display group-hover/partition:text-[var(--color-naman-indigo)] transition-colors leading-snug">
@@ -99,14 +96,6 @@ export default function HardwareStorage() {
                       <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
                         {item.description}
                       </p>
-                    </div>
-
-                    <div className="pt-5 mt-6 border-t border-[#E5EDE2] flex items-center justify-between text-xs relative z-10">
-                      <span className="text-[11px] text-[var(--color-espresso)] font-semibold flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brass)] shadow-[0_0_4px_var(--color-brass)] animate-pulse" />
-                        Precision Steel Track
-                      </span>
-                      <span className="text-[10px] font-mono text-[var(--color-warm-gray)]">100% Extension</span>
                     </div>
                   </div>
                 );
