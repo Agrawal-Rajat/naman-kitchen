@@ -41,7 +41,7 @@ export default function HardwareStorage() {
           subtitle="A kitchen is only as good as the mechanics inside its cabinets. We partner with top-tier hardware manufacturers to guarantee effortless daily operation."
         />
 
-        {/* Master Horizontal Vintage-Modern Hardware Drawer Chassis (Refined Light Sage-Olive & Ivory Palette) */}
+        {/* Master Horizontal Hardware Drawer Chassis (Refined Light Sage-Olive & Ivory Palette) */}
         <Reveal direction="up" delay={0.15}>
           <div className="relative w-full max-w-7xl mx-auto rounded-3xl bg-gradient-to-b from-[#9CB08E] via-[#8FA581] to-[#829974] border-2 border-[#B8A04A]/60 shadow-[0_20px_45px_rgba(45,43,96,0.07)] p-3 sm:p-5 mb-12 overflow-hidden">
             
@@ -73,7 +73,7 @@ export default function HardwareStorage() {
               </div>
             </div>
 
-            {/* Internal 4 Drawer Compartments with Vertical Divider Partitions (Warm Beige/Ivory Interior) */}
+            {/* Internal 4 Drawer Compartments with Vertical Divider Partitions */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 rounded-2xl bg-[#FCFBF8] border border-[#D2DCD0] shadow-inner overflow-hidden divide-y md:divide-y-0 md:divide-x divide-[#DCE5DA]">
               {features.map((item, idx) => {
                 const Icon = item.icon;
@@ -82,22 +82,17 @@ export default function HardwareStorage() {
                     key={idx}
                     className="p-6 sm:p-7 flex flex-col justify-between relative group/partition hover:bg-white transition-all duration-300"
                   >
-                    {/* Top Compartment Header */}
                     <div className="relative z-10">
                       <div className="flex items-center justify-between mb-5">
                         <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[var(--color-naman-indigo)] to-[var(--color-naman-indigo-light)] flex items-center justify-center text-white shadow-sm group-hover/partition:scale-105 transition-transform duration-300">
                           <Icon className="w-5 h-5 text-[#FFEBB0]" />
                         </div>
-                        <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD] shadow-xs">
+                        <span className="text-[11px] uppercase font-semibold tracking-wider px-3 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
                           {item.tag}
                         </span>
                       </div>
 
-                      {/* Compartment Label & Title */}
-                      <div className="text-[10px] font-mono text-[#586D4E] font-bold tracking-widest mb-1.5 uppercase opacity-90">
-                        Slot // 0{idx + 1}
-                      </div>
-                      <h3 className="text-lg sm:text-xl font-normal text-[var(--color-espresso)] mb-2.5 font-display group-hover/partition:text-[var(--color-naman-indigo)] transition-colors leading-snug">
+                      <h3 className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] mb-2.5 font-display group-hover/partition:text-[var(--color-naman-indigo)] transition-colors leading-snug">
                         {item.title}
                       </h3>
 
@@ -106,7 +101,6 @@ export default function HardwareStorage() {
                       </p>
                     </div>
 
-                    {/* Bottom Compartment Track Spec */}
                     <div className="pt-5 mt-6 border-t border-[#E5EDE2] flex items-center justify-between text-xs relative z-10">
                       <span className="text-[11px] text-[var(--color-espresso)] font-semibold flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brass)] shadow-[0_0_4px_var(--color-brass)] animate-pulse" />

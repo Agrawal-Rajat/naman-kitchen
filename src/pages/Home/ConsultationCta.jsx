@@ -6,16 +6,13 @@ import ctaBg from '../../assets/cta.png';
 
 export default function ConsultationCta() {
   return (
-    <section className="section-spacing bg-zinc-950 text-white relative overflow-hidden shape-chimney mx-2 sm:mx-4 lg:mx-8 my-6 sm:my-10">
-      {/* Background CTA Kitchen Ambience Image with Natural Colors */}
+    <section className="section-spacing bg-[#1D201A] text-white relative overflow-hidden shape-chimney mx-2 sm:mx-4 lg:mx-8 my-6 sm:my-10">
+      {/* Background CTA Kitchen Ambience Image with 10% Opacity */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-40 z-0"
+        className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-10 z-0"
         style={{ backgroundImage: `url(${ctaBg})` }}
         aria-hidden="true"
       />
-
-      {/* Clean Neutral Dark Overlay for Text Legibility (No Brown Tint / No Colored Glow) */}
-      <div className="absolute inset-0 bg-black/55 pointer-events-none z-0" />
 
       <div className="container-site relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">

@@ -6,16 +6,13 @@ import ctaBg from '../../assets/cta.png';
 
 export default function KitchenConsultationCta() {
   return (
-    <section className="py-16 md:py-24 bg-zinc-950 text-white text-center relative overflow-hidden">
-      {/* Background CTA Kitchen Ambience Image with Natural Low Opacity */}
+    <section className="py-16 md:py-24 bg-[#1D201A] text-white text-center relative overflow-hidden">
+      {/* Background CTA Kitchen Ambience Image with 10% Opacity */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-40 z-0"
+        className="absolute inset-0 w-full h-full bg-cover bg-center pointer-events-none opacity-10 z-0"
         style={{ backgroundImage: `url(${ctaBg})` }}
         aria-hidden="true"
       />
-
-      {/* Clean Neutral Dark Overlay for Text Legibility */}
-      <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
 
       <div className="container-site max-w-3xl space-y-6 relative z-10">
         <Reveal direction="up" delay={0.1}>

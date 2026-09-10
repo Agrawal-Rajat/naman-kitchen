@@ -3,6 +3,13 @@ import { Target, Users, Shield, BadgePercent, CheckCircle2 } from 'lucide-react'
 import SectionHeading from '../../components/common/SectionHeading';
 import Reveal from '../../components/motion/Reveal';
 
+import bgImg1 from '../../assets/work/project-kitchen-champagne-01.jpeg';
+import bgImg2 from '../../assets/work/project-kitchen-warm-wood-01.jpeg';
+import bgImg3 from '../../assets/work/project-kitchen-white-gold-01.jpeg';
+import bgImg4 from '../../assets/work/project-kitchen-emerald-01.jpeg';
+
+const containerBgImages = [bgImg1, bgImg2, bgImg3, bgImg4];
+
 export default function WhyNamanKitchen() {
   const pillars = [
     {
@@ -64,13 +71,13 @@ export default function WhyNamanKitchen() {
                     </div>
                   )}
 
-                  {/* Luxury Olive Reeded/Fluted Island-Inspired Container (Softer Lighter Olive Shade) */}
+                  {/* Fluted Olive Outer Border Container Frame */}
                   <div className="relative h-full rounded-[28px] overflow-hidden border-2 border-[var(--color-brass)]/45 bg-[#A1B28F] shadow-[0_16px_36px_rgba(45,43,96,0.08)] hover:shadow-[0_20px_48px_rgba(107,127,94,0.2)] transition-all duration-300 group/fluted p-1.5">
                     
                     {/* Top Ambient LED Glow Strip */}
                     <div className="absolute top-0 inset-x-6 h-[3px] bg-gradient-to-r from-transparent via-[#FFF4C7] to-transparent shadow-[0_2px_8px_#FFE48A] z-20" />
 
-                    {/* Vintage Reeded / Fluted Slat Background Lines (Softer Lighter Olive) */}
+                    {/* Vintage Reeded / Fluted Slat Background Lines */}
                     <div
                       className="absolute inset-0 pointer-events-none opacity-90 z-0"
                       style={{
@@ -90,37 +97,38 @@ export default function WhyNamanKitchen() {
                       aria-hidden="true"
                     />
 
-                    {/* Transparent Inner Wrapper with Warm Beige Frosted Glass Pods */}
-                    <div className="relative z-10 p-5 sm:p-7 flex flex-col justify-between h-full">
-                      <div>
-                        {/* Top Controls Row */}
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="w-12 h-12 rounded-2xl bg-[#F6F2E8]/94 backdrop-blur-md border border-[#E8E0CE] text-[var(--color-naman-indigo)] flex items-center justify-center shadow-xs group-hover/fluted:scale-105 transition-transform duration-300">
+                    {/* Inner White Card Pod with Exact Current Content */}
+                    <div className="relative z-10 p-6 sm:p-7 rounded-2xl bg-white border border-[#D2DCD0] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group overflow-hidden">
+                      {/* Background Image with low opacity */}
+                      <img
+                        src={containerBgImages[idx]}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-10 group-hover:opacity-20 transition-opacity duration-300"
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10">
+                        {/* Header Row */}
+                        <div className="flex items-center justify-between mb-5">
+                          <div className="w-12 h-12 rounded-xl bg-[var(--color-ivory-light)] text-[var(--color-naman-indigo)] flex items-center justify-center border border-[#E0D8C8] group-hover:scale-105 transition-transform duration-300">
                             <Icon className="w-6 h-6 text-[var(--color-naman-indigo)]" />
                           </div>
-                          <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-[#F6F2E8]/94 backdrop-blur-md text-[var(--color-naman-indigo)] border border-[#E8E0CE] shadow-xs">
+                          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
                             {pillar.badge}
                           </span>
                         </div>
 
-                        {/* Warm Beige Frosted Glass Card Pod for Text Readability */}
-                        <div className="p-5 sm:p-6 rounded-2xl bg-[#F6F2E8]/94 backdrop-blur-md border border-[#E8E0CE] shadow-sm space-y-2.5">
-                          <h3 className="text-lg sm:text-xl font-normal text-[var(--color-espresso)] font-display leading-snug">
-                            {pillar.title}
-                          </h3>
+                        <h3 className="text-lg sm:text-xl font-medium text-[var(--color-espresso)] font-display leading-snug mb-3 group-hover:text-[var(--color-naman-indigo)] transition-colors">
+                          {pillar.title}
+                        </h3>
 
-                          <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
-                            {pillar.description}
-                          </p>
-                        </div>
+                        <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
+                          {pillar.description}
+                        </p>
                       </div>
 
-                      {/* Bottom Verification Pod */}
-                      <div className="mt-4 pt-3 flex items-center">
-                        <div className="inline-flex items-center gap-2 text-xs font-bold text-[var(--color-naman-red)] bg-[#F6F2E8]/94 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#E8E0CE] shadow-xs">
-                          <CheckCircle2 className="w-4 h-4 text-[var(--color-naman-red)]" />
-                          <span>Verified Company Standard</span>
-                        </div>
+                      <div className="relative z-10 mt-6 pt-4 border-t border-[#EAE5D9] flex items-center gap-2 text-xs font-semibold text-[var(--color-naman-indigo)]">
+                        <CheckCircle2 className="w-4 h-4 text-[var(--color-naman-red)]" />
+                        <span>Verified Company Standard</span>
                       </div>
                     </div>
                   </div>

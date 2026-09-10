@@ -2,72 +2,72 @@ import React from 'react';
 import { ShieldCheck, Weight, Flame, Sparkles, Activity, CheckCircle2 } from 'lucide-react';
 import Reveal from '../../components/motion/Reveal';
 
+import bgImg1 from '../../assets/work/project-kitchen-blue-02.jpeg';
+import bgImg2 from '../../assets/work/project-kitchen-charcoal-02.jpeg';
+import bgImg3 from '../../assets/work/project-kitchen-rustic-02.jpeg';
+import bgImg4 from '../../assets/work/project-kitchen-warm-wood-02.jpeg';
+
+const containerBgImages = [bgImg1, bgImg2, bgImg3, bgImg4];
+
 export default function HardwareFeatureHighlight() {
   const specs = [
     {
       icon: Weight,
       title: 'High Load Capacity (45kg+)',
       desc: 'Engineered specifically for heavy brass, cast iron, and large stainless steel Indian cookware without sagging.',
-      specCode: 'TEST // 45KG-MAX',
       techBadge: 'Full-Load Deflection < 1mm',
-      tag: 'Heavy Cookware',
     },
     {
       icon: ShieldCheck,
       title: '100,000+ Cycle Reliability',
       desc: 'Precision hydraulic dampeners tested for over 25 years of daily smooth, silent, and whisper-quiet closure.',
-      specCode: 'TEST // 100K-CYCLES',
       techBadge: 'DIN EN 15338 Verified',
-      tag: 'Lifelong Durability',
     },
     {
       icon: Flame,
       title: 'Moisture & Oil Resilient',
       desc: 'Anti-corrosive multi-layer nickel-chrome electroplating resistant to turmeric, high steam, and Indian kitchen vapours.',
-      specCode: 'TEST // SALT-SPRAY-96H',
       techBadge: 'ISO 9227 Grade 5',
-      tag: 'Anti-Corrosive',
     },
     {
       icon: Sparkles,
       title: 'Ergonomic Full Extension',
       desc: '100% telescopic slide channels providing completely unobstructed access all the way to the deepest rear of each drawer.',
-      specCode: 'TEST // 100% OVERTRAVEL',
       techBadge: 'Zero Blind-Corner Reach',
-      tag: 'Full Access',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[#181613] text-white relative overflow-hidden border-t border-white/10">
-      {/* Subtle Fluted Vertical Background Texture */}
+    <section className="py-20 md:py-28 bg-[#EFF4EC] text-[var(--color-espresso)] relative overflow-hidden border-t border-black/5">
+      {/* Less Opaque Gridlines forming Squares */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-20"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,255,255,0.06) 38px, rgba(255,255,255,0.06) 40px)'
+          backgroundImage: 'linear-gradient(to right, rgba(45, 60, 40, 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(45, 60, 40, 0.06) 1px, transparent 1px)',
+          backgroundSize: '36px 36px'
         }}
       />
       
-      {/* Ambient Radial Lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-radial from-[#B8A04A]/10 to-transparent pointer-events-none blur-3xl" />
+      {/* Subtle Radial Ambient Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-radial from-white/60 to-transparent pointer-events-none blur-3xl" />
 
       <div className="container-site relative z-10">
         <div className="max-w-3xl mb-14">
           <Reveal direction="up" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-[var(--color-brass)]/30 text-[var(--color-brass)] text-xs uppercase font-bold tracking-widest mb-3">
-              <Activity className="w-3.5 h-3.5 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DFE8DB] border border-[#C2D2BD] text-[#334230] text-xs uppercase font-bold tracking-widest mb-3 shadow-2xs">
+              <Activity className="w-3.5 h-3.5 animate-pulse text-[var(--color-naman-red)]" />
               <span>Built For Indian Cooking & Heavy Utensils</span>
             </div>
           </Reveal>
           
           <Reveal direction="up" delay={0.2}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#182017] tracking-tight leading-tight font-display">
               Why Hardware Quality Dictates Your Kitchen’s Lifetime
             </h2>
           </Reveal>
           
           <Reveal direction="up" delay={0.3}>
-            <p className="text-sm sm:text-base text-white/70 mt-4 leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base text-[#404D3F] mt-4 leading-relaxed max-w-2xl font-normal">
               Many kitchens fail within two years because inferior hinges and thin sliders sag under everyday Indian weights.
               We specify only heavy-duty structural mechanisms designed for continuous, demanding use.
             </p>
@@ -80,49 +80,49 @@ export default function HardwareFeatureHighlight() {
             const Icon = spec.icon;
             return (
               <Reveal key={i} direction="up" delay={0.15 + i * 0.1}>
-                <div className="relative group/spec h-full flex flex-col justify-between rounded-2xl bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] border border-white/15 p-6 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-md hover:border-[var(--color-brass)]/80 hover:shadow-[0_16px_36px_rgba(184,160,74,0.18)] hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
+                <div className="relative group/spec h-full flex flex-col justify-between rounded-2xl bg-white border border-[#D5E0CF] p-6 sm:p-7 shadow-[0_6px_20px_rgba(45,60,40,0.06)] hover:shadow-[0_14px_32px_rgba(45,60,40,0.12)] hover:border-[#859581]/60 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
                   
+                  {/* Background Image with 10% opacity, turning to 20% on hover */}
+                  <img
+                    src={containerBgImages[i]}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-10 group-hover/spec:opacity-20 transition-opacity duration-300 z-0"
+                    aria-hidden="true"
+                  />
+
                   {/* Top Brass Hardware Corner Rivets */}
-                  <div className="absolute top-3 left-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/40 shadow-xs flex items-center justify-center">
+                  <div className="absolute top-3 left-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center z-10">
                     <div className="w-0.5 h-0.5 rounded-full bg-[#3D3320]" />
                   </div>
-                  <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/40 shadow-xs flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#FFE7A3] to-[#A38634] border border-black/20 shadow-xs flex items-center justify-center z-10">
                     <div className="w-0.5 h-0.5 rounded-full bg-[#3D3320]" />
                   </div>
 
-                  {/* Header: Spec Code & Tag */}
-                  <div className="pt-2">
-                    <div className="flex items-center justify-between mb-5">
-                      {/* Icon Box with Dual-Tone Gradient */}
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-naman-indigo)] to-[var(--color-naman-indigo-light)] border border-white/20 flex items-center justify-center text-white shadow-md group-hover/spec:scale-105 transition-transform duration-300">
-                        <Icon className="w-6 h-6 text-[#FFEBB0]" />
+                  {/* Header & Description */}
+                  <div className="pt-2 relative z-10">
+                    <div className="mb-5">
+                      {/* Icon Box */}
+                      <div className="w-12 h-12 rounded-xl bg-[#EDF3EA] border border-[#CAD8C5] flex items-center justify-center text-[#364634] shadow-2xs group-hover/spec:scale-105 group-hover/spec:bg-[var(--color-naman-indigo)] group-hover/spec:text-white transition-all duration-300">
+                        <Icon className="w-6 h-6" />
                       </div>
-                      
-                      <span className="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-white/10 text-white/80 border border-white/10 uppercase">
-                        {spec.specCode}
-                      </span>
                     </div>
 
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-[var(--color-brass)] mb-1.5">
-                      {spec.tag}
-                    </div>
-
-                    <h3 className="text-lg font-bold text-white mb-3 group-hover/spec:text-[#FFEBB0] transition-colors leading-snug">
+                    <h3 className="text-lg font-bold text-[#182017] mb-2.5 group-hover/spec:text-[var(--color-naman-indigo)] transition-colors leading-snug font-display">
                       {spec.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-[#404D3F] leading-relaxed font-normal">
                       {spec.desc}
                     </p>
                   </div>
 
                   {/* Bottom Technical Benchmark Plate */}
-                  <div className="pt-4 mt-6 border-t border-white/10 flex items-center justify-between text-xs">
-                    <span className="text-[11px] text-white/90 font-medium flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#6EE7B7]" />
+                  <div className="pt-4 mt-6 border-t border-[#E2EADF] flex items-center justify-between text-xs relative z-10">
+                    <span className="text-[11px] text-[#2C382A] font-semibold flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[var(--color-naman-red)]" />
                       {spec.techBadge}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brass)] shadow-[0_0_6px_var(--color-brass)] animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#859581] shadow-[0_0_6px_#859581] animate-pulse" />
                   </div>
                 </div>
               </Reveal>

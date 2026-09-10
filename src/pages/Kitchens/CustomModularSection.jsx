@@ -2,7 +2,6 @@ import React from 'react';
 import { Compass, PenTool, ShieldCheck, ArrowRight } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Reveal from '../../components/motion/Reveal';
-import floorBg from '../../assets/floor.png';
 
 export default function CustomModularSection() {
   return (
@@ -10,11 +9,14 @@ export default function CustomModularSection() {
       <div className="container-site">
         <Reveal direction="up">
           <div className="relative overflow-hidden bg-white rounded-3xl p-8 sm:p-12 border border-black/10 shadow-card">
-            {/* Background Floor Texture with low opacity identical to hero section */}
+            {/* Background Image with Low Opacity for Architectural Texture */}
             <div
-              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none opacity-15 mix-blend-multiply z-0"
-              style={{ backgroundImage: `url(${floorBg})` }}
+              className="absolute inset-0 bg-cover bg-center opacity-80 pointer-events-none"
+              style={{ backgroundImage: `url('/images/kitchens/kitchen-custom.webp')` }}
+              aria-hidden="true"
             />
+            {/* Soft Gradient Overlay for Optimal Text Readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70 pointer-events-none z-0" />
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-8 space-y-4">

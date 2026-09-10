@@ -45,10 +45,6 @@ export default function ProcessTimeline() {
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FFFCEB] via-[#FFE187] to-[#E5AC2E] shadow-[0_0_14px_rgba(229,172,46,0.45)] group-hover:shadow-[0_0_22px_rgba(229,172,46,0.75)] group-hover:scale-105 flex items-center justify-center text-[var(--color-espresso)] font-extrabold text-sm border border-white/80 transition-all duration-300">
                         {step.step}
                       </div>
-
-                      <span className="text-[10px] font-mono font-bold tracking-widest text-[var(--color-brass)] uppercase bg-[var(--color-ivory)]/80 px-2 py-0.5 rounded-full border border-[var(--color-brass)]/20">
-                        Pendant 0{idx + 1}
-                      </span>
                     </div>
 
                     {/* Lamp Body: Title & Description */}

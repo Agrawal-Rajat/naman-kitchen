@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import { kitchenLayouts } from '../../data/kitchenLayouts';
 import SectionHeading from '../../components/common/SectionHeading';
@@ -7,7 +6,6 @@ import ImageFrame from '../../components/common/ImageFrame';
 import KitchenShapeContainer from '../../components/common/KitchenShapeContainer';
 import Button from '../../components/common/Button';
 import Reveal from '../../components/motion/Reveal';
-import floorBg from '../../assets/floor.png';
 
 export default function KitchenLayoutExplorer() {
   const [selectedLayout, setSelectedLayout] = useState(kitchenLayouts[0].id);
@@ -44,14 +42,7 @@ export default function KitchenLayoutExplorer() {
         </div>
 
         {/* Active Layout Showcase Card — Modular L-Counter Architectural Container */}
-        <KitchenShapeContainer shape="l-counter" className="p-6 sm:p-10 shadow-card bg-white relative overflow-hidden">
-          {/* Full-Cover Background Floor Texture with low opacity */}
-          <div
-            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none opacity-15 mix-blend-multiply z-0"
-            style={{ backgroundImage: `url(${floorBg})` }}
-            aria-hidden="true"
-          />
-
+        <KitchenShapeContainer shape="l-counter" bgClassName="bg-[#F5EFE6]" className="p-6 sm:p-10 shadow-card relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             {/* Visual Frame */}
             <div className="lg:col-span-7">
@@ -67,12 +58,9 @@ export default function KitchenLayoutExplorer() {
             </div>
 
             {/* Layout Details */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-3">
               <div>
-                <span className="text-xs uppercase font-bold tracking-widest text-[var(--color-naman-red)]">
-                  Modular Configuration
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-[var(--color-espresso)] mt-1">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[var(--color-espresso)]">
                   {activeItem.title}
                 </h3>
               </div>
@@ -82,30 +70,24 @@ export default function KitchenLayoutExplorer() {
               </p>
 
               {/* Feature Checklist */}
-              <div className="space-y-2.5 pt-2">
-                <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-warm-gray)]">
+              <div className="space-y-1.5 pt-2">
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-warm-gray)]">
                   Key Advantages
                 </div>
                 {activeItem.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 text-sm text-[var(--color-espresso)]">
-                    <span className="w-5 h-5 rounded-full bg-[var(--color-naman-indigo)]/10 text-[var(--color-naman-indigo)] flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5" />
+                  <div key={idx} className="flex items-center gap-2 text-xs text-[var(--color-espresso)]">
+                    <span className="w-4 h-4 rounded-full bg-[var(--color-naman-indigo)]/10 text-[var(--color-naman-indigo)] flex items-center justify-center shrink-0">
+                      <Check className="w-3 h-3" />
                     </span>
                     <span>{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex flex-wrap items-center gap-4">
+              <div className="pt-4">
                 <Button to="/contact" variant="primary" size="md" icon={ArrowRight}>
                   Design This Layout
                 </Button>
-                <Link
-                  to="/kitchens"
-                  className="text-xs font-semibold uppercase tracking-wider text-[var(--color-naman-indigo)] hover:underline"
-                >
-                  View Full Layout Guide →
-                </Link>
               </div>
             </div>
           </div>
