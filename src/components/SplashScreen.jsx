@@ -7,18 +7,18 @@ export default function SplashScreen({ onComplete }) {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // Stage 1: Keep cabinet intact for ~2.2s so user enjoys the craftsmanship
+    // Stage 1: Short hold (~1.0s) so user sees brand before doors open
     const timerOpen = setTimeout(() => {
       setIsOpen(true);
-    }, 2200);
+    }, 1000);
 
-    // Stage 2: Finish transition and unmount after animation completes (~3.4s)
+    // Stage 2: Finish transition and unmount after doors open (~1.75s total)
     const timerDone = setTimeout(() => {
       setIsDone(true);
       if (onComplete) {
         onComplete();
       }
-    }, 3400);
+    }, 1750);
 
     return () => {
       clearTimeout(timerOpen);
@@ -33,21 +33,27 @@ export default function SplashScreen({ onComplete }) {
       setTimeout(() => {
         setIsDone(true);
         if (onComplete) onComplete();
-      }, 1100);
+      }, 650);
     }
   };
 
   if (isDone) return null;
 
-  const easeCabinet = [0.77, 0, 0.175, 1]; // Smooth heavy cabinet inertia easing
+  const easeCabinet = [0.22, 1, 0.36, 1]; // Smooth, responsive cabinet inertia easing
 
   return (
     <AnimatePresence>
-      <div 
+      <motion.div 
         className="splash-overlay" 
         onClick={handleImmediateOpen}
         role="presentation"
         aria-label="Loading animation"
+        initial={{ opacity: 1 }}
+        animate={{ 
+          backgroundColor: isOpen ? 'rgba(26, 22, 19, 0)' : 'rgba(26, 22, 19, 1)',
+          pointerEvents: isOpen ? 'none' : 'auto'
+        }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         {/* Ambient center back-glow */}
         <div className="center-glow-spot" />
@@ -59,7 +65,7 @@ export default function SplashScreen({ onComplete }) {
           className="relative w-full h-[28%] cabinet-wood-texture cabinet-frame flex items-center justify-center p-3 sm:p-4 z-30"
           initial={{ y: 0 }}
           animate={{ y: isOpen ? '-102%' : '0%' }}
-          transition={{ duration: 1.1, ease: easeCabinet }}
+          transition={{ duration: 0.7, ease: easeCabinet }}
         >
           {/* Shaker Panel Inset */}
           <div className="w-full max-w-5xl h-full shaker-box rounded-lg sm:rounded-xl flex items-center justify-center relative overflow-hidden">
@@ -79,7 +85,12 @@ export default function SplashScreen({ onComplete }) {
         </motion.div>
 
         {/* Architectural Horizontal Cabinet Groove */}
-        <div className="cabinet-groove" />
+        <motion.div 
+          className="cabinet-groove"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isOpen ? 0 : 1 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+        />
 
         {/* ====================================================
             ROW 2: MIDDLE ROW (Hero Cabinet with Company Name & Handle)
@@ -91,7 +102,7 @@ export default function SplashScreen({ onComplete }) {
             className="w-1/2 h-full cabinet-wood-texture cabinet-frame flex items-center justify-end p-2 sm:p-4 border-r border-black/80"
             initial={{ x: 0 }}
             animate={{ x: isOpen ? '-102%' : '0%' }}
-            transition={{ duration: 1.15, ease: easeCabinet }}
+            transition={{ duration: 0.72, ease: easeCabinet }}
           >
             <div className="w-full h-full shaker-box rounded-l-lg sm:rounded-l-xl relative overflow-hidden flex items-center justify-end">
               <div className="absolute inset-2 sm:inset-3 shaker-inner-bevel rounded-l-md sm:rounded-l-lg pointer-events-none" />
@@ -104,7 +115,7 @@ export default function SplashScreen({ onComplete }) {
             className="w-1/2 h-full cabinet-wood-texture cabinet-frame flex items-center justify-start p-2 sm:p-4 border-l border-white/5"
             initial={{ x: 0 }}
             animate={{ x: isOpen ? '102%' : '0%' }}
-            transition={{ duration: 1.15, ease: easeCabinet }}
+            transition={{ duration: 0.72, ease: easeCabinet }}
           >
             <div className="w-full h-full shaker-box rounded-r-lg sm:rounded-r-xl relative overflow-hidden flex items-center justify-start">
               <div className="absolute inset-2 sm:inset-3 shaker-inner-bevel rounded-r-md sm:rounded-r-lg pointer-events-none" />
@@ -118,9 +129,9 @@ export default function SplashScreen({ onComplete }) {
             initial={{ opacity: 1, scale: 1 }}
             animate={{
               opacity: isOpen ? 0 : 1,
-              scale: isOpen ? 0.95 : 1,
+              scale: isOpen ? 0.92 : 1,
             }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
           >
             {/* Decorative Top Brass Accent Line */}
             <div className="flex items-center gap-3 mb-2 sm:mb-3">
@@ -162,7 +173,12 @@ export default function SplashScreen({ onComplete }) {
         </div>
 
         {/* Architectural Horizontal Cabinet Groove */}
-        <div className="cabinet-groove" />
+        <motion.div 
+          className="cabinet-groove"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isOpen ? 0 : 1 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+        />
 
         {/* ====================================================
             ROW 3: BOTTOM CABINET DRAWER (Slides DOWN)
@@ -171,7 +187,7 @@ export default function SplashScreen({ onComplete }) {
           className="relative w-full h-[28%] cabinet-wood-texture cabinet-frame flex items-center justify-center p-3 sm:p-4 z-30"
           initial={{ y: 0 }}
           animate={{ y: isOpen ? '102%' : '0%' }}
-          transition={{ duration: 1.1, ease: easeCabinet }}
+          transition={{ duration: 0.7, ease: easeCabinet }}
         >
           {/* Shaker Panel Inset */}
           <div className="w-full max-w-5xl h-full shaker-box rounded-lg sm:rounded-xl flex items-center justify-center relative overflow-hidden">
@@ -189,7 +205,8 @@ export default function SplashScreen({ onComplete }) {
             <div className="absolute bottom-3 right-4 w-2 h-2 rounded-full bg-[#8A7129] opacity-60 shadow-inner" />
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </AnimatePresence>
   );
 }
+

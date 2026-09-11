@@ -4,7 +4,7 @@ import Reveal from '../../components/motion/Reveal';
 
 export default function ContactHero() {
   return (
-    <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 bg-[var(--color-ivory-light)] border-b border-black/5 overflow-hidden">
+    <section className="relative pt-8 pb-10 md:pt-12 md:pb-14 bg-[var(--color-ivory-light)] border-b border-black/5 overflow-hidden">
       {/* Background Image Layer */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-45 pointer-events-none"

@@ -52,7 +52,6 @@ export default function KitchenLayoutExplorer() {
                   alt={activeItem.title}
                   aspectRatio="aspect-[16/10]"
                   className="rounded-2xl shadow-subtle"
-                  badge={`${activeItem.title}`}
                 />
               </Reveal>
             </div>

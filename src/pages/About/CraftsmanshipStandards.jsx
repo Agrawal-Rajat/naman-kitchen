@@ -2,9 +2,9 @@ import React from 'react';
 import { ShieldCheck, Ruler, Users, HeartHandshake, Lightbulb, Sparkles } from 'lucide-react';
 import Reveal from '../../components/motion/Reveal';
 
-import bgImg1 from '../../assets/work/project-kitchen-blue-01.jpeg';
+import bgImg1 from '../../assets/work/project-kitchen-blue-02.jpeg';
 import bgImg2 from '../../assets/work/project-kitchen-charcoal-01.jpeg';
-import bgImg3 from '../../assets/work/project-kitchen-rustic-01.jpeg';
+import bgImg3 from '../../assets/work/project-kitchen-rustic-02.jpeg';
 import bgImg4 from '../../assets/work/project-kitchen-teal-white-01.jpeg';
 
 const containerBgImages = [bgImg1, bgImg2, bgImg3, bgImg4];
@@ -34,7 +34,7 @@ export default function CraftsmanshipStandards() {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[var(--color-ivory-light)] text-[var(--color-espresso)] relative overflow-hidden border-t border-black/5">
+    <section className="py-10 md:py-14 bg-[var(--color-ivory-light)] text-[var(--color-espresso)] relative overflow-hidden border-t border-black/5">
       {/* Subtle Ambient Radial Lighting */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-30"
@@ -45,13 +45,6 @@ export default function CraftsmanshipStandards() {
 
       <div className="container-site relative z-10">
         <div className="max-w-3xl mb-14 text-center mx-auto">
-          <Reveal direction="up" delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5ECE0] border border-[#BACABA] text-[#43573A] text-xs uppercase font-bold tracking-widest mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[var(--color-brass)]" />
-              <span>Unmatched Precision & Craftsmanship</span>
-            </div>
-          </Reveal>
-
           <Reveal direction="up" delay={0.2}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-espresso)] tracking-tight leading-tight font-display">
               Quality Is Our Identity
@@ -126,15 +119,6 @@ export default function CraftsmanshipStandards() {
                       <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
                         {std.desc}
                       </p>
-                    </div>
-
-                    {/* Bottom Status Indicator */}
-                    <div className="relative z-10 pt-3 mt-4 border-t border-[#E5EDE2] flex items-center justify-between text-xs">
-                      <span className="text-[11px] text-[var(--color-espresso-mid)] flex items-center gap-1.5 font-medium">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-naman-indigo)] shadow-[0_0_4px_var(--color-naman-indigo)] animate-pulse" />
-                        Guaranteed Benchmark
-                      </span>
-                      <span className="text-[10px] font-mono text-[var(--color-warm-gray)]">100% Quality Checked</span>
                     </div>
                   </div>
                 );

@@ -23,8 +23,7 @@ export default function BrandValues() {
       year: '2020',
       slot: '03',
       title: 'Navigating Pandemic Challenges',
-      desc: 'Overcame Covid-19 market disruptions through uncompromised customer trust, disciplined finances, and lasting relationships.',
-      badge: 'Resilience',
+      desc: 'Navigated Covid-19 disruptions through uncompromised trust, disciplined finances, and strong vendor relationships.',
     },
     {
       year: '2022+',
@@ -46,32 +45,38 @@ export default function BrandValues() {
 
         {/* Modern Clean Milestone Timeline Grid */}
         <Reveal direction="up" delay={0.15}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {milestones.map((m, idx) => (
-              <div
-                key={idx}
-                className="p-6 sm:p-7 rounded-2xl bg-[#FCFBF8] border border-[#D2DCD0] shadow-sm hover:shadow-md hover:border-[var(--color-naman-indigo)]/40 hover:bg-white flex flex-col justify-between transition-all duration-300 group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-[var(--color-naman-indigo)] tracking-tight font-display group-hover:text-[var(--color-naman-red)] transition-colors">
-                      {m.year}
-                    </span>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD]">
-                      {m.badge}
-                    </span>
+          <div className="relative mb-16">
+            {/* Straight Horizontal Connecting Line / Chain (Desktop) */}
+            <div className="hidden lg:block absolute top-1/2 left-6 right-6 h-[2px] bg-[var(--color-naman-indigo)]/35 -translate-y-1/2 pointer-events-none z-0" />
+
+            {/* Straight Horizontal Connecting Lines / Chain (Tablet: 2 rows) */}
+            <div className="hidden md:block lg:hidden absolute top-[25%] left-6 right-6 h-[2px] bg-[var(--color-naman-indigo)]/35 -translate-y-1/2 pointer-events-none z-0" />
+            <div className="hidden md:block lg:hidden absolute top-[75%] left-6 right-6 h-[2px] bg-[var(--color-naman-indigo)]/35 -translate-y-1/2 pointer-events-none z-0" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+              {milestones.map((m, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 sm:p-7 rounded-2xl bg-[#FCFBF8] border border-[#D2DCD0] shadow-sm hover:shadow-md hover:border-[var(--color-naman-indigo)]/40 hover:bg-white flex flex-col justify-between transition-all duration-300 group relative z-10"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-2xl sm:text-3xl font-extrabold text-[var(--color-naman-indigo)] tracking-tight font-display group-hover:text-[var(--color-naman-red)] transition-colors">
+                        {m.year}
+                      </span>
+                    </div>
+
+                    <h3 className="text-base sm:text-lg font-bold text-[var(--color-espresso)] mb-2.5 leading-snug group-hover:text-[var(--color-naman-indigo)] transition-colors">
+                      {m.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
+                      {m.desc}
+                    </p>
                   </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-[var(--color-espresso)] mb-2.5 leading-snug group-hover:text-[var(--color-naman-indigo)] transition-colors">
-                    {m.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-[var(--color-espresso-mid)] leading-relaxed font-normal">
-                    {m.desc}
-                  </p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </Reveal>
 
@@ -105,39 +110,30 @@ export default function BrandValues() {
                   </li>
                 </ul>
               </div>
-
-              <div className="pt-4 border-t border-[#E5EDE2] flex items-center justify-between text-xs text-[var(--color-warm-gray)]">
-                <span className="font-semibold text-[var(--color-naman-indigo)]">Client-Centric Philosophy</span>
-                <span>Indore & MP</span>
-              </div>
             </div>
           </Reveal>
 
-          {/* Vision Card (Olive Palette matching Craftsmanship Standards) */}
+          {/* Vision Card (Naman Luxury Indigo & Metallic Gold Palette) */}
           <Reveal direction="up" delay={0.3}>
-            <div className="rounded-2xl bg-gradient-to-b from-[#9CB08E] via-[#8FA581] to-[#829974] border-2 border-white/40 shadow-md p-6 sm:p-8 flex flex-col justify-between h-full space-y-6 text-white relative overflow-hidden">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-xs mb-4">
-                  <Building2 className="w-6 h-6 text-[var(--color-naman-indigo)]" />
+            <div className="rounded-2xl bg-gradient-to-br from-[#2D2B60] via-[#24224E] to-[#1A183B] border-2 border-[#FFE394]/30 shadow-card p-6 sm:p-8 flex flex-col justify-between h-full space-y-6 text-white relative overflow-hidden">
+              {/* Subtle Background Glow */}
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#FFE394]/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xs mb-4">
+                  <Building2 className="w-6 h-6 text-[#FFE394]" />
                 </div>
-                <span className="text-xs uppercase font-extrabold tracking-widest text-[var(--color-naman-indigo)] block mb-1">
+                <span className="text-xs uppercase font-extrabold tracking-widest text-[#FFE394] block mb-1">
                   हमारा विज़न (Our Vision)
                 </span>
-                <h3 className="text-2xl font-normal text-white font-display mb-4">
+                <h3 className="text-2xl font-bold text-white font-display mb-4 leading-snug">
                   Empowering MP Entrepreneurs with Zero-Royalty Partnerships
                 </h3>
                 <p className="text-sm text-white/90 leading-relaxed mb-4 font-normal">
                   To build an empowering modular kitchen network across Madhya Pradesh by offering a{' '}
-                  <strong className="text-[var(--color-naman-indigo)] font-extrabold">"No Franchise Fee – No Royalty"</strong> model,
+                  <strong className="text-[#FFE394] font-extrabold">"No Franchise Fee – No Royalty"</strong> model,
                   fostering self-reliant entrepreneurs and bringing dependable kitchen standards to every district.
                 </p>
-              </div>
-
-              <div className="pt-4 border-t border-white/25 flex items-center justify-between text-xs">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/25 backdrop-blur-md text-xs text-white border border-white/30 font-medium">
-                  <Award className="w-3.5 h-3.5 text-[var(--color-naman-indigo)]" />
-                  Growth Platform for Local Business Owners
-                </span>
               </div>
             </div>
           </Reveal>

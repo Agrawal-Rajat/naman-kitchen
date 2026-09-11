@@ -96,10 +96,7 @@ export default function BrandPartners() {
 
                     {/* Card Content */}
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#EAF0E7] text-[#43573A] border border-[#C2D2BD] shadow-2xs">
-                          {partner.tag}
-                        </span>
+                      <div className="flex items-center justify-end mb-3">
                         <Award className="w-4 h-4 text-[var(--color-brass)]" />
                       </div>
 

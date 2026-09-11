@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, Sparkles } from 'lucide-react';
+import { Send, CheckCircle2, Sparkles, ChevronDown } from 'lucide-react';
 import Button from '../../components/common/Button';
 
 export default function ConsultationForm() {
@@ -87,7 +87,7 @@ export default function ConsultationForm() {
             placeholder="e.g. Rahul Sharma"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm text-[var(--color-espresso)]"
           />
         </div>
 
@@ -102,7 +102,7 @@ export default function ConsultationForm() {
             placeholder="e.g. 98260XXXXX"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm text-[var(--color-espresso)]"
           />
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function ConsultationForm() {
             placeholder="e.g. Vijay Nagar, Indore"
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm text-[var(--color-espresso)]"
           />
         </div>
 
@@ -128,17 +128,20 @@ export default function ConsultationForm() {
           <label htmlFor="client-prop" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Property Type
           </label>
-          <select
-            id="client-prop"
-            value={formData.propertyType}
-            onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
-          >
-            <option value="Apartment">Apartment / Flat (2BHK / 3BHK)</option>
-            <option value="Independent House">Independent House / Villa</option>
-            <option value="Renovation">Complete Kitchen Renovation</option>
-            <option value="Architect Project">Architect / Commercial Project</option>
-          </select>
+          <div className="relative">
+            <select
+              id="client-prop"
+              value={formData.propertyType}
+              onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
+              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
+            >
+              <option value="Apartment">Apartment / Flat (2BHK / 3BHK)</option>
+              <option value="Independent House">Independent House / Villa</option>
+              <option value="Renovation">Complete Kitchen Renovation</option>
+              <option value="Architect Project">Architect / Commercial Project</option>
+            </select>
+            <ChevronDown className="w-4 h-4 text-[var(--color-espresso-mid)] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
         </div>
       </div>
 
@@ -148,36 +151,42 @@ export default function ConsultationForm() {
           <label htmlFor="client-layout" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Preferred Kitchen Layout
           </label>
-          <select
-            id="client-layout"
-            value={formData.layout}
-            onChange={(e) => setFormData({ ...formData, layout: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
-          >
-            <option value="L-Shaped">L-Shaped Kitchen</option>
-            <option value="Straight">Straight Kitchen</option>
-            <option value="Parallel">Parallel Kitchen</option>
-            <option value="U-Shaped">U-Shaped Kitchen</option>
-            <option value="Island">Island Kitchen</option>
-            <option value="Custom Modular">Custom Architecture</option>
-          </select>
+          <div className="relative">
+            <select
+              id="client-layout"
+              value={formData.layout}
+              onChange={(e) => setFormData({ ...formData, layout: e.target.value })}
+              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
+            >
+              <option value="L-Shaped">L-Shaped Kitchen</option>
+              <option value="Straight">Straight Kitchen</option>
+              <option value="Parallel">Parallel Kitchen</option>
+              <option value="U-Shaped">U-Shaped Kitchen</option>
+              <option value="Island">Island Kitchen</option>
+              <option value="Custom Modular">Custom Architecture</option>
+            </select>
+            <ChevronDown className="w-4 h-4 text-[var(--color-espresso-mid)] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
         </div>
 
         <div>
           <label htmlFor="client-budget" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Estimated Budget Range
           </label>
-          <select
-            id="client-budget"
-            value={formData.budget}
-            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
-          >
-            <option value="Essential (₹1.5L – ₹2.5L)">Essential (₹1.5L – ₹2.5L)</option>
-            <option value="Standard (₹2.5L – ₹4.5L)">Standard (₹2.5L – ₹4.5L)</option>
-            <option value="Premium (₹4.5L – ₹7L)">Premium (₹4.5L – ₹7L)</option>
-            <option value="Luxury (₹7L+)">Luxury Bespoke (₹7L+)</option>
-          </select>
+          <div className="relative">
+            <select
+              id="client-budget"
+              value={formData.budget}
+              onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
+            >
+              <option value="Essential (₹1.5L – ₹2.5L)">Essential (₹1.5L – ₹2.5L)</option>
+              <option value="Standard (₹2.5L – ₹4.5L)">Standard (₹2.5L – ₹4.5L)</option>
+              <option value="Premium (₹4.5L – ₹7L)">Premium (₹4.5L – ₹7L)</option>
+              <option value="Luxury (₹7L+) ">Luxury Bespoke (₹7L+)</option>
+            </select>
+            <ChevronDown className="w-4 h-4 text-[var(--color-espresso-mid)] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          </div>
         </div>
       </div>
 

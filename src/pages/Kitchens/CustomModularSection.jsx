@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, PenTool, ShieldCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Reveal from '../../components/motion/Reveal';
 
@@ -31,21 +31,6 @@ export default function CustomModularSection() {
                   collaborating directly with civil contractors and interior architects. From curved walls to pillar concealments
                   and dedicated pooja corner alignments, we ensure flawless integration.
                 </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-xs font-semibold text-[var(--color-espresso)]">
-                  <div className="flex items-center gap-2">
-                    <Compass className="w-4 h-4 text-[var(--color-naman-red)]" />
-                    <span>On-Site Laser Measurement</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <PenTool className="w-4 h-4 text-[var(--color-naman-indigo)]" />
-                    <span>Architect CAD Coordination</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[var(--color-brass)]" />
-                    <span>Custom Carcass Fabrication</span>
-                  </div>
-                </div>
               </div>
 
               <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center">

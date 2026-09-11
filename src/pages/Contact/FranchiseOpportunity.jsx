@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Button from '../../components/common/Button';
 import ctaBg from '../../assets/cta.png';
 
@@ -16,10 +16,6 @@ export default function FranchiseOpportunity() {
           />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5 text-[var(--color-brass)]" />
-                <span>Partner & Franchise Network</span>
-              </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                 Partner with Naman Kitchen: “No Franchise Fee – No Royalty Model”
@@ -29,21 +25,6 @@ export default function FranchiseOpportunity() {
                 Are you an interior designer, contractor, or entrepreneur looking to build a thriving modular kitchen studio
                 in your district? We provide full design software support, direct wholesale hardware pricing, and complete manufacturing backup.
               </p>
-
-              <div className="flex flex-wrap gap-4 text-xs text-white/70 pt-2">
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[var(--color-brass)]" />
-                  Zero Franchise Surcharges
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[var(--color-brass)]" />
-                  Wholesale Material Pipeline
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[var(--color-brass)]" />
-                  Site Execution Guidance
-                </span>
-              </div>
             </div>
 
             <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center">

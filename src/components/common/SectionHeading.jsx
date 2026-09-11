@@ -19,7 +19,7 @@ export default function SectionHeading({
   }[align] || 'text-center items-center mx-auto';
 
   return (
-    <div className={`flex flex-col max-w-3xl mb-12 md:mb-16 ${alignClasses} ${className}`}>
+    <div className={`flex flex-col max-w-3xl mb-6 md:mb-8 ${alignClasses} ${className}`}>
       {eyebrow && <Eyebrow dark={dark} className="mb-4">{eyebrow}</Eyebrow>}
       {title && (
         <h2 className={`text-3xl md:text-5xl font-bold tracking-tight ${dark ? 'text-white' : 'text-[var(--color-espresso)]'}`}>

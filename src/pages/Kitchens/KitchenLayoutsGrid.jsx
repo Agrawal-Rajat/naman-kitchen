@@ -18,7 +18,6 @@ export default function KitchenLayoutsGrid({ onSelectLayout }) {
                   alt={layout.title}
                   aspectRatio="aspect-[16/10]"
                   className="rounded-t-3xl rounded-b-none border-none"
-                  badge={layout.shortTitle}
                 />
 
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">

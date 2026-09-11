@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Wrench } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { hardwareItems } from '../../data/hardwareItems';
 import ImageFrame from '../../components/common/ImageFrame';
 import Button from '../../components/common/Button';
@@ -35,11 +35,7 @@ export default function HardwareGrid({ activeCategory }) {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-black/5 flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-[var(--color-warm-gray)] flex items-center gap-1">
-                      <Wrench className="w-3 h-3 text-[var(--color-naman-red)]" />
-                      Lifetime Grade
-                    </span>
+                  <div className="pt-3 border-t border-black/5 flex items-center justify-end">
                     <Button
                       to={`/contact?hardware=${item.id}`}
                       variant="ghost"
