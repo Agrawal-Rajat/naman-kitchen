@@ -15,7 +15,11 @@ export default function FeaturedProjects() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <SectionHeading
             eyebrow="Crafted in Indore & MP"
-            title="Real Homes. Delivered Excellence."
+            title={
+              <>
+                Real Homes.<br className="block sm:hidden" /> Delivered Excellence.
+              </>
+            }
             subtitle="Explore our completed kitchen installations across Vijay Nagar, Palasia, AB Road, and surrounding regions. Smooth pull-out drawer showcases with real site images."
             align="left"
             className="mb-0"
