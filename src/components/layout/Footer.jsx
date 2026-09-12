@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ShieldCheck, HeartHandshake, Phone, ArrowUpRight } from 'lucide-react';
+import { MapPin, ShieldCheck, HeartHandshake, Phone, ArrowUpRight, Heart } from 'lucide-react';
 import { InstagramIcon as Instagram } from '../common/Icons';
 import { navItems } from '../../data/navigation';
 import Button from '../common/Button';
@@ -140,6 +140,23 @@ export default function Footer() {
               Franchise & Partner Inquiries
             </Link>
           </div>
+        </div>
+
+        {/* Made with love by Codeshor */}
+        <div className="pt-4 mt-6 border-t border-white/10 text-center text-xs text-white/70">
+          <p className="flex items-center justify-center gap-1.5 font-normal tracking-wide" style={{ color: '#E8DFD0' }}>
+            <span>Made with</span>
+            <Heart className="w-3.5 h-3.5 text-[var(--color-naman-red)] fill-[var(--color-naman-red)] inline-block animate-pulse" />
+            <span>by</span>
+            <a
+              href="https://www.codeshor.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-[var(--color-brass)] hover:text-white transition-colors underline decoration-[var(--color-brass)]/50 underline-offset-4 hover:decoration-white"
+            >
+              Codeshor
+            </a>
+          </p>
         </div>
       </div>
     </footer>
