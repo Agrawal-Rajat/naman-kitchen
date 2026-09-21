@@ -726,5 +726,34 @@
   -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
 
+/* ====================================================
+   CONSULTATION FORM ANIMATIONS
+   ==================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.consultation-form .form-field-group input:focus,
+.consultation-form .form-field-group select:focus,
+.consultation-form .form-field-group textarea:focus {
+  box-shadow: 0 0 0 3px rgba(var(--color-naman-indigo-rgb, 40, 45, 80), 0.08);
+}
+
+.consultation-success {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
 
 

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Send, CheckCircle2, Sparkles, ChevronDown } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Send, CheckCircle2, Sparkles, ChevronDown, AlertCircle, Loader2 } from 'lucide-react';
 import Button from '../../components/common/Button';
 
 export default function ConsultationForm() {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     phone: '',
     city: 'Indore',
     layout: 'L-Shaped',
@@ -15,36 +16,80 @@ export default function ConsultationForm() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const formRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
 
-    // Simulate clean dispatch
-    setTimeout(() => {
+    try {
+      const payload = {
+        access_key: '03954b1e-833f-4ffd-ad09-90f881cfc6e6',
+        subject: `🏠 New Kitchen Consultation – ${formData.name} | ${formData.city}`,
+        from_name: 'Naman Kitchen Website',
+        // Structured data for a clean email
+        'Full Name': formData.name,
+        'Email': formData.email,
+        'Phone': formData.phone,
+        'City / Area': formData.city,
+        'Property Type': formData.propertyType,
+        'Preferred Layout': formData.layout,
+        'Budget Range': formData.budget,
+        'Additional Notes': formData.message || 'No additional notes provided.',
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.message || 'Something went wrong. Please try again or contact us directly.');
+      }
+    } catch (err) {
+      setError('Network error. Please check your internet connection and try again.');
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-3xl p-8 sm:p-12 border border-black/10 shadow-card text-center space-y-6">
-        <div className="w-16 h-16 rounded-full bg-green-100 text-green-700 flex items-center justify-center mx-auto">
-          <CheckCircle2 className="w-8 h-8" />
+      <div className="consultation-success bg-white rounded-3xl p-8 sm:p-12 border border-black/10 shadow-card text-center space-y-6">
+        {/* Animated success ring */}
+        <div className="relative w-20 h-20 mx-auto">
+          <div className="absolute inset-0 rounded-full bg-green-100 animate-ping opacity-30" />
+          <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-green-50 to-emerald-100 text-emerald-600 flex items-center justify-center shadow-lg shadow-green-200/50">
+            <CheckCircle2 className="w-10 h-10" strokeWidth={1.5} />
+          </div>
         </div>
         <h3 className="text-2xl sm:text-3xl font-bold text-[var(--color-espresso)]">
           Thank You, {formData.name}!
         </h3>
         <p className="text-sm sm:text-base text-[var(--color-espresso-mid)] max-w-md mx-auto leading-relaxed">
           Your consultation request has been received. A Naman Kitchen design specialist will contact you
-          within 24 hours to review your {formData.layout} kitchen requirements for {formData.city}.
+          within 24 hours to review your <strong>{formData.layout}</strong> kitchen requirements for <strong>{formData.city}</strong>.
         </p>
+        <div className="inline-flex items-center gap-2 text-xs text-emerald-700 bg-emerald-50 px-4 py-2 rounded-full font-medium">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          Confirmation sent to {formData.email}
+        </div>
         <Button
           onClick={() => {
             setSubmitted(false);
             setFormData({
               name: '',
+              email: '',
               phone: '',
               city: 'Indore',
               layout: 'L-Shaped',
@@ -63,7 +108,11 @@ export default function ConsultationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 sm:p-12 border border-black/10 shadow-card space-y-8">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      className="consultation-form bg-white rounded-3xl p-8 sm:p-12 border border-black/10 shadow-card space-y-8"
+    >
       <div className="border-b border-black/10 pb-4">
         <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-naman-indigo)]">
           <Sparkles className="w-3.5 h-3.5 text-[var(--color-naman-red)]" />
@@ -74,9 +123,20 @@ export default function ConsultationForm() {
         </h2>
       </div>
 
+      {/* Error Alert */}
+      {error && (
+        <div className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm animate-fadeIn">
+          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+          <div>
+            <p className="font-semibold">Submission Failed</p>
+            <p className="text-red-600 mt-0.5">{error}</p>
+          </div>
+        </div>
+      )}
+
       {/* Row 1: Contact details */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
+        <div className="form-field-group">
           <label htmlFor="client-name" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Full Name *
           </label>
@@ -87,11 +147,29 @@ export default function ConsultationForm() {
             placeholder="e.g. Rahul Sharma"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm text-[var(--color-espresso)]"
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm text-[var(--color-espresso)]"
           />
         </div>
 
-        <div>
+        <div className="form-field-group">
+          <label htmlFor="client-email" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
+            Email Address *
+          </label>
+          <input
+            id="client-email"
+            type="email"
+            required
+            placeholder="e.g. rahul@example.com"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm text-[var(--color-espresso)]"
+          />
+        </div>
+      </div>
+
+      {/* Row 2: Phone & City */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="form-field-group">
           <label htmlFor="client-phone" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Phone Number *
           </label>
@@ -102,14 +180,11 @@ export default function ConsultationForm() {
             placeholder="e.g. 98260XXXXX"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm text-[var(--color-espresso)]"
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm text-[var(--color-espresso)]"
           />
         </div>
-      </div>
 
-      {/* Row 2: Location & Property Type */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
+        <div className="form-field-group">
           <label htmlFor="client-city" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             City / Area in Madhya Pradesh *
           </label>
@@ -120,11 +195,14 @@ export default function ConsultationForm() {
             placeholder="e.g. Vijay Nagar, Indore"
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm text-[var(--color-espresso)]"
+            className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm text-[var(--color-espresso)]"
           />
         </div>
+      </div>
 
-        <div>
+      {/* Row 3: Property Type & Layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="form-field-group">
           <label htmlFor="client-prop" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Property Type
           </label>
@@ -133,7 +211,7 @@ export default function ConsultationForm() {
               id="client-prop"
               value={formData.propertyType}
               onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
+              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
             >
               <option value="Apartment">Apartment / Flat (2BHK / 3BHK)</option>
               <option value="Independent House">Independent House / Villa</option>
@@ -143,11 +221,8 @@ export default function ConsultationForm() {
             <ChevronDown className="w-4 h-4 text-[var(--color-espresso-mid)] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
-      </div>
 
-      {/* Row 3: Desired Layout & Budget */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
+        <div className="form-field-group">
           <label htmlFor="client-layout" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Preferred Kitchen Layout
           </label>
@@ -156,7 +231,7 @@ export default function ConsultationForm() {
               id="client-layout"
               value={formData.layout}
               onChange={(e) => setFormData({ ...formData, layout: e.target.value })}
-              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
+              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
             >
               <option value="L-Shaped">L-Shaped Kitchen</option>
               <option value="Straight">Straight Kitchen</option>
@@ -168,8 +243,11 @@ export default function ConsultationForm() {
             <ChevronDown className="w-4 h-4 text-[var(--color-espresso-mid)] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
+      </div>
 
-        <div>
+      {/* Row 4: Budget */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="form-field-group">
           <label htmlFor="client-budget" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
             Estimated Budget Range
           </label>
@@ -178,7 +256,7 @@ export default function ConsultationForm() {
               id="client-budget"
               value={formData.budget}
               onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
+              className="w-full px-4 py-3 pr-10 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm appearance-none cursor-pointer text-[var(--color-espresso)]"
             >
               <option value="Essential (₹1.5L – ₹2.5L)">Essential (₹1.5L – ₹2.5L)</option>
               <option value="Standard (₹2.5L – ₹4.5L)">Standard (₹2.5L – ₹4.5L)</option>
@@ -190,8 +268,8 @@ export default function ConsultationForm() {
         </div>
       </div>
 
-      {/* Row 4: Message or requirements */}
-      <div>
+      {/* Row 5: Message or requirements */}
+      <div className="form-field-group">
         <label htmlFor="client-message" className="block text-xs font-bold uppercase tracking-wider text-[var(--color-espresso)] mb-2">
           Notes or Specific Requirements (Optional)
         </label>
@@ -201,7 +279,7 @@ export default function ConsultationForm() {
           placeholder="Mention any specific preferences like tall pantry units, chimney placement, microwave tall-units, or current construction status..."
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none transition-colors text-sm"
+          className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm"
         />
       </div>
 
@@ -212,9 +290,16 @@ export default function ConsultationForm() {
           size="lg"
           className="w-full sm:w-auto"
           disabled={loading}
-          icon={Send}
+          icon={loading ? undefined : Send}
         >
-          {loading ? 'Submitting...' : 'Book Free Consultation'}
+          {loading ? (
+            <span className="inline-flex items-center gap-2">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Sending...
+            </span>
+          ) : (
+            'Book Free Consultation'
+          )}
         </Button>
         <p className="text-xs text-[var(--color-warm-gray)] mt-3">
           We respect your privacy. No spam. A kitchen specialist will connect for personal guidance.
