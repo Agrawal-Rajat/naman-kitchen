@@ -38,8 +38,8 @@ export default function ContactInfoCards() {
                 Call & Consultation
               </span>
               <div className="text-xs sm:text-sm font-bold text-[var(--color-espresso)] mt-0.5">
-                <a href="tel:+919826000000" className="hover:text-[var(--color-naman-indigo)] transition-colors">
-                  +91 98260 XXXXX
+                <a href="tel:+919575511657" className="hover:text-[var(--color-naman-indigo)] transition-colors">
+                  +91 95755 11657
                 </a>
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function ContactInfoCards() {
               </span>
               <div className="text-xs sm:text-sm font-bold text-[#25D366] mt-0.5">
                 <a
-                  href="https://wa.me/919826000000?text=Hello%20Naman%20Kitchen"
+                  href="https://wa.me/919575511657?text=Hello%20Naman%20Kitchen"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"
