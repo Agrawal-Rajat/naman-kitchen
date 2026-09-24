@@ -40,7 +40,7 @@ export default function KitchenConsultationCta() {
               Book Design Consultation
             </Button>
             <Button
-              href="https://wa.me/919826000000?text=Hi%20Naman%20Kitchen,%20I%20would%20like%20to%20consult%20about%20kitchen%20layouts."
+              href="https://wa.me/919575511657?text=Hi%20Naman%20Kitchen,%20I%20would%20like%20to%20consult%20about%20kitchen%20layouts."
               variant="outline"
               size="lg"
               className="text-white border-white/30 hover:border-white hover:text-white"

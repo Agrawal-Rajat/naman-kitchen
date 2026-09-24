@@ -22,7 +22,7 @@ export default function HardwareConsultationCta() {
             Request Hardware Pricing
           </Button>
           <Button
-            href="tel:+919826000000"
+            href="tel:+919575511657"
             variant="outline"
             size="lg"
             icon={PhoneCall}

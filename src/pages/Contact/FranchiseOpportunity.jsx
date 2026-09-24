@@ -29,7 +29,7 @@ export default function FranchiseOpportunity() {
 
             <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center">
               <Button
-                href="https://wa.me/919826000000?text=Hello%20Naman%20Kitchen,%20I%20am%20interested%20in%20a%20Franchise%20/%20Dealer%20opportunity."
+                href="https://wa.me/919575511657?text=Hello%20Naman%20Kitchen,%20I%20am%20interested%20in%20a%20Franchise%20/%20Dealer%20opportunity."
                 variant="accent"
                 size="lg"
                 icon={ArrowRight}

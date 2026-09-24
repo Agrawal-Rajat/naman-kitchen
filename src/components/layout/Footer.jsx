@@ -98,10 +98,10 @@ export default function Footer() {
               <MapPin className="w-4 h-4 text-[var(--color-naman-red)] shrink-0 mt-0.5" />
               <span>Indore & Madhya Pradesh, India</span>
             </p>
-            <p className="text-xs text-white/70 flex items-center gap-2">
+            <a href="tel:+919575511657" className="text-xs text-white/70 flex items-center gap-2 hover:text-white transition-colors">
               <Phone className="w-4 h-4 text-[var(--color-brass)] shrink-0" />
-              <span>Wholesale & Project Site Execution</span>
-            </p>
+              <span>+91 95755 11657</span>
+            </a>
             <div className="pt-2">
               <a
                 href="https://www.instagram.com/kitchensnaman"

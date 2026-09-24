@@ -111,10 +111,10 @@ export default function MobileNav({ isOpen, onClose }) {
                 <MapPin className="w-4 h-4 text-[#FFD369] shrink-0" />
                 <span className="font-medium">Indore & Madhya Pradesh</span>
               </div>
-              <div className="flex items-center gap-2">
+              <a href="tel:+919575511657" className="flex items-center gap-2 hover:text-[#FFEAA8] transition-colors">
                 <Phone className="w-4 h-4 text-[#FFEAA8] shrink-0" />
-                <span className="font-medium">Life Long Partner</span>
-              </div>
+                <span className="font-medium">+91 95755 11657</span>
+              </a>
               <a
                 href="https://www.instagram.com/kitchensnaman"
                 target="_blank"

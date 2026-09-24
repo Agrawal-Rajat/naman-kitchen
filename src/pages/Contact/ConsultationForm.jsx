@@ -19,6 +19,27 @@ export default function ConsultationForm() {
   const [error, setError] = useState('');
   const formRef = useRef(null);
 
+  // Build a well-formatted WhatsApp message from form data
+  const buildWhatsAppUrl = (data) => {
+    const lines = [
+      `🏠 *New Kitchen Consultation Request*`,
+      ``,
+      `👤 *Name:* ${data.name}`,
+      `📧 *Email:* ${data.email}`,
+      `📞 *Phone:* ${data.phone}`,
+      `📍 *City / Area:* ${data.city}`,
+      `🏗️ *Property Type:* ${data.propertyType}`,
+      `📐 *Preferred Layout:* ${data.layout}`,
+      `💰 *Budget Range:* ${data.budget}`,
+    ];
+    if (data.message) {
+      lines.push(``, `📝 *Additional Notes:*`, data.message);
+    }
+    lines.push(``, `— Sent via Naman Kitchen Website`);
+    const text = encodeURIComponent(lines.join('\n'));
+    return `https://wa.me/919575511657?text=${text}`;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -53,6 +74,9 @@ export default function ConsultationForm() {
 
       if (result.success) {
         setSubmitted(true);
+        // Also send the consultation details via WhatsApp
+        const whatsappUrl = buildWhatsAppUrl(formData);
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
       } else {
         setError(result.message || 'Something went wrong. Please try again or contact us directly.');
       }
@@ -177,7 +201,7 @@ export default function ConsultationForm() {
             id="client-phone"
             type="tel"
             required
-            placeholder="e.g. 98260XXXXX"
+            placeholder="e.g. 9575511657"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="w-full px-4 py-3 rounded-xl border border-black/15 bg-[var(--color-ivory-light)] focus:bg-white focus:border-[var(--color-naman-indigo)] focus:outline-none focus:ring-2 focus:ring-[var(--color-naman-indigo)]/15 transition-all text-sm text-[var(--color-espresso)]"

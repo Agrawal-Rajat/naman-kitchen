@@ -37,7 +37,7 @@ export default function ConsultationCta() {
                 Book a Free Consultation
               </Button>
               <Button
-                href="https://wa.me/919826000000?text=Hello%20Naman%20Kitchen,%20I%20would%20like%20to%20consult%20about%20a%20modular%20kitchen."
+                href="https://wa.me/919575511657?text=Hello%20Naman%20Kitchen,%20I%20would%20like%20to%20consult%20about%20a%20modular%20kitchen."
                 variant="outline"
                 size="lg"
                 className="text-white border-white/30 hover:border-white hover:text-white"
